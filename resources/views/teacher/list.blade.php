@@ -56,7 +56,7 @@
                                         <td>{{$t->type}}</td>
                                         <td class="center">
                                             <img height="50"
-                                                 src="{{env('WEB_SITE')}}uploads/company_logo/{{$t->head_img}}" />
+                                                 src="{{env('WEB_SITE')}}uploads/teacher_img/{{$t->head_img}}" />
                                         </td>
                                         <td>{{$t->title}}</td>
                                         <td>{{$t->specialty}}</td>
