@@ -27,7 +27,7 @@ class StudentController extends Controller
                         ->orWhere('company.name','like','%'.$keyword.'%');
                 }
             })
-            ->orderBy('student.id','desc')->paginate(5);
+            ->orderBy('student.id','desc')->paginate(20);
         return view('student.list',compact('students','keyword'));
     }
 }

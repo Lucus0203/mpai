@@ -25,7 +25,7 @@ class TeacherController extends Controller
                         ->orWhere('company.name','like','%'.$keyword.'%');
                 }
             })
-            ->orderBy('teacher.id','desc')->paginate(5);
+            ->orderBy('teacher.id','desc')->paginate(20);
         return view('teacher.list',compact('teachers','keyword'));
     }
 }
