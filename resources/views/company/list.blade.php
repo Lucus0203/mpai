@@ -54,7 +54,7 @@
                                         <td>{{$c->code}}</td>
                                         <td>{{$c->parent_industry_name}} {{$c->industry_name}}</td>
                                         <td class="center"><img height="50"
-                                                                src="{{$c->logo or env('WEB_SITE').'images/face_default.png'}}" />
+                                                                src="{{$c->logo ? env('WEB_SITE').'uploads/company_logo/'.$c->logo : env('WEB_SITE').'images/face_default.png'}}" />
                                         </td>
                                         <td>{{$c->contact}}</td>
                                         <td>{{$c->mobile}}</td>
