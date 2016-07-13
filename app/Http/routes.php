@@ -19,7 +19,8 @@ Route::get('logout', 'Admin\AuthController@getLogout');
 
 Route::group(['middleware'=>['auth']],function(){
     Route::get('/', 'HomeController@index');
-    Route::get('/company', 'CompanyController@index');
+    Route::get('/company/list', 'CompanyController@index');
+    Route::get('/company/failusers', 'CompanyController@failusers');
     Route::get('/course', 'CourseController@index');
     Route::get('/teacher', 'TeacherController@index');
     Route::get('/student', 'StudentController@index');

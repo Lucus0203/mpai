@@ -27,4 +27,12 @@ class CompanyController extends Controller
             ->orderBy('code','desc')->paginate(20);
         return view('company.list',compact('companys','keyword'));
     }
+
+    public function failusers(){
+        $users=DB::table('pai_user as user')
+            ->select('mobile','mobile_code','created','updated')
+            ->where('user_name','=',null)
+            ->orderBy('id','desc')->paginate(20);
+        return view('company.failusers',compact('users'));
+    }
 }
