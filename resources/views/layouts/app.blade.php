@@ -86,7 +86,7 @@
 
                 <li class="light-blue">
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                        <img class="nav-user-photo" src="avatars/user.png" alt="Jason's Photo" />
+                        <img class="nav-user-photo" src="{{URL::asset('avatars/user.png')}}" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>欢迎光临,</small>
 									Admin
@@ -127,11 +127,26 @@
                     </a>
                 </li>
 
-                <li class="{{ Request::segment(1)=='company' ? 'active' : '' }}">
-                    <a href="/company">
+                <li>
+                    <a href="#" class="dropdown-toggle">
                         <i class="icon-i fa fa-building fa-lg" aria-hidden="true"></i>
-                        <span class="menu-text"> 公司 </span>
+                        <span class="menu-text"> 企业 </span>
+                        <b class="arrow fa fa-angle-down"></b>
                     </a>
+                    <ul class="submenu" {{ Request::segment(1)=='company' ? 'style=display:block;' : '' }}>
+                        <li class="{{ Request::is('company/list') ? 'active' : '' }}">
+                            <a href="/company/list">
+                                <i class="icon-double-angle-right"></i>
+                                已激活企业
+                            </a>
+                        </li>
+                        <li class="{{ Request::is('company/failusers') ? 'active' : '' }}">
+                            <a href="/company/failusers">
+                                <i class="icon-double-angle-right"></i>
+                                未激活企业
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="{{ Request::segment(1)=='course' ? 'active' : '' }}">

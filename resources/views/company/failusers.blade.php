@@ -7,7 +7,7 @@
                 <i class="icon-home fa fa-home fa-lg"></i>
                 <a href="/">首页</a>
             </li>
-            <li class="active">已激活企业</li>
+            <li class="active">未激活企业</li>
         </ul><!-- .breadcrumb -->
     </div>
     <div class="page-content">
@@ -16,16 +16,11 @@
                 首页
                 <small>
                     <i class="icon-double-angle-right fa fa-angle-double-right fa-lg"></i>
-                    已激活企业
+                    未激活企业
                 </small>
             </h1>
         </div><!-- /.page-header -->
         <div class="row">
-            <div class="col-sm-6">
-                {{ Form::open(['url'=>'company','method'=>'get']) }}
-                <label>关键字查询(公司/联系人/手机/邮箱): {{ Form::text('keyword',$keyword) }}</label>
-                {{ Form::close()}}
-            </div>
             <div class="col-xs-12">
                 <!-- PAGE CONTENT BEGINS -->
                 <div class="row">
@@ -34,31 +29,19 @@
                             <table id="sample-table-1" class="table table-striped table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th>公司名称</th>
-                                    <th>公司编号</th>
-                                    <th>所属行业</th>
-                                    <th class="center">logo</th>
-                                    <th>联系人</th>
                                     <th>手机</th>
-                                    <th>邮箱</th>
+                                    <th>验证码</th>
+                                    <th>注册时间</th>
                                     <th class="center">操作</th>
                                 </tr>
                                 </thead>
 
                                 <tbody>
-                                @foreach($companys as $c)
+                                @foreach($users as $u)
                                     <tr>
-                                        <td>
-                                            <a href="#">{{$c->name}}</a>
-                                        </td>
-                                        <td>{{$c->code}}</td>
-                                        <td>{{$c->parent_industry_name}} {{$c->industry_name}}</td>
-                                        <td class="center"><img height="50"
-                                                                src="{{$c->logo ? env('WEB_SITE').'uploads/company_logo/'.$c->logo : env('WEB_SITE').'images/face_default.png'}}" />
-                                        </td>
-                                        <td>{{$c->contact}}</td>
-                                        <td>{{$c->mobile}}</td>
-                                        <td>{{$c->email}}</td>
+                                        <td>{{$u->mobile}}</td>
+                                        <td>{{$u->mobile_code}}</td>
+                                        <td>{{$u->created}}</td>
 
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
@@ -72,12 +55,12 @@
                                 </tbody>
                             </table>
                             <div class="col-sm-6">
-                                <div class="dataTables_info">一共{{$companys->total()}}条记录,当前第{{$companys->currentPage()}}
+                                <div class="dataTables_info">一共{{$users->total()}}条记录,当前第{{$users->currentPage()}}
                                     页
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="dataTables_paginate">{!! $companys->appends(['keyword' => $keyword])->links() !!}</div>
+                                <div class="dataTables_paginate">{!! $users->links() !!}</div>
                             </div>
                         </div><!-- /.table-responsive -->
                     </div><!-- /span -->
