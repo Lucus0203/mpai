@@ -136,13 +136,13 @@
                     <ul class="submenu" {{ Request::segment(1)=='company' ? 'style=display:block;' : '' }}>
                         <li class="{{ Request::is('company/list') ? 'active' : '' }}">
                             <a href="/company/list">
-                                <i class="icon-double-angle-right"></i>
+                                <i class="icon-double-angle-right fa fa-angle-double-right"></i>
                                 已激活企业
                             </a>
                         </li>
                         <li class="{{ Request::is('company/failusers') ? 'active' : '' }}">
                             <a href="/company/failusers">
-                                <i class="icon-double-angle-right"></i>
+                                <i class="icon-double-angle-right fa fa-angle-double-right"></i>
                                 未激活企业
                             </a>
                         </li>
