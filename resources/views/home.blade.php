@@ -77,8 +77,8 @@
                             </div>
 
                             <div class="infobox-data">
-                                <a href="/company/failusers"><span class="infobox-data-number">{{$failcount}}</span>
-                                <div class="infobox-content">未激活用户</div></a>
+                                <span class="infobox-data-number">{{$failcount}}</span>
+                                <a href="/company/failusers"><div class="infobox-content">未激活用户</div></a>
                             </div>
                         </div>
                     </div>
