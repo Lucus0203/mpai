@@ -32,6 +32,7 @@ class CompanyController extends Controller
         $users=DB::table('pai_user as user')
             ->select('mobile','mobile_code','created','updated')
             ->where('user_name','=',null)
+            ->orWhere('user_name','=','')
             ->orderBy('id','desc')->paginate(20);
         return view('company.failusers',compact('users'));
     }
