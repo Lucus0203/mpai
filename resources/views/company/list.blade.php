@@ -39,8 +39,10 @@
                                     <th>所属行业</th>
                                     <th class="center">logo</th>
                                     <th>联系人</th>
+                                    <th>账号</th>
                                     <th>手机</th>
                                     <th>邮箱</th>
+                                    <th>注册时间</th>
                                     <th class="center">操作</th>
                                 </tr>
                                 </thead>
@@ -57,9 +59,10 @@
                                                                 src="{{$c->logo ? env('WEB_SITE').'uploads/company_logo/'.$c->logo : env('WEB_SITE').'images/face_default.png'}}" />
                                         </td>
                                         <td>{{$c->contact}}</td>
+                                        <td>{{$c->user_name}}</td>
                                         <td>{{$c->mobile}}</td>
                                         <td>{{$c->email}}</td>
-
+                                        <td>{{$c->created}}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
                                                 <button class="btn btn-xs btn-info">

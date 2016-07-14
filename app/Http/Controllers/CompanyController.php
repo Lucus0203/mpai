@@ -13,9 +13,11 @@ class CompanyController extends Controller
         $keyword = $request->input('keyword');
 
         $companys=DB::table('pai_company as company')
-            ->select('company.id','company.code','company.name','company.logo','company.contact','company.mobile','company.tel','company.email','parent_industry.name as parent_industry_name','industry.name as industry_name')
+            ->select('company.id','company.code','company.name','company.logo','company.contact','company.mobile','company.tel','company.email','user.user_name','user.created','parent_industry.name as parent_industry_name','industry.name as industry_name')
+            ->leftJoin('pai_user as user','company.code','=','user.company_code')
             ->leftJoin('pai_industries as parent_industry','company.industry_parent_id','=','parent_industry.id')
             ->leftJoin('pai_industries as industry','company.industry_id','=','industry.id')
+            ->where('user.role','=','1')
             ->where(function($query) use ($keyword){
                 if(!empty($keyword)){
                     $query->where('company.name','like','%'.$keyword.'%')
