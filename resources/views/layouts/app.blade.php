@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>培训派-后台管理系统</title>
-    <meta name="keywords" content="培训派" />
-    <meta name="description" content="培训派" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="培训派"/>
+    <meta name="description" content="培训派"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <!-- basic styles -->
-    <link href="{{URL::asset('css/bootstrap.min.css')}}" rel="stylesheet" />
-    <link rel="stylesheet" href="{{URL::asset('css/font-awesome.min.css')}}" />
+    <link href="{{URL::asset('css/bootstrap.min.css')}}" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{URL::asset('css/font-awesome.min.css')}}"/>
     <!-- ace styles -->
-    <link rel="stylesheet" href="{{URL::asset('css/ace.min.css')}}" />
-    <link rel="stylesheet" href="{{URL::asset('css/ace-rtl.min.css')}}" />
-    <link rel="stylesheet" href="{{URL::asset('css/ace-skins.min.css')}}" />
+    <link rel="stylesheet" href="{{URL::asset('css/ace.min.css')}}"/>
+    <link rel="stylesheet" href="{{URL::asset('css/ace-rtl.min.css')}}"/>
+    <link rel="stylesheet" href="{{URL::asset('css/ace-skins.min.css')}}"/>
 
     <script src="{{URL::asset('js/ace-extra.min.js')}}"></script>
     <!-- basic scripts -->
@@ -27,7 +28,7 @@
     <script src="{{URL::asset('js\jquery-1.10.2.min.js')}}"></script>
     <![endif]-->
     <script type="text/javascript">
-        if("ontouchend" in document) document.write("<script src='{{URL::asset('js/jquery.mobile.custom.min.js')}}'>"+"<"+"script>");
+        if ("ontouchend" in document) document.write("<script src='{{URL::asset('js/jquery.mobile.custom.min.js')}}'>" + "<" + "script>");
     </script>
     <script src="{{URL::asset('js/bootstrap.min.js')}}"></script>
     <script src="{{URL::asset('js/typeahead-bs2.min.js')}}"></script>
@@ -86,7 +87,7 @@
 
                 <li class="light-blue">
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                        <img class="nav-user-photo" src="{{URL::asset('avatars/user.png')}}" alt="Jason's Photo" />
+                        <img class="nav-user-photo" src="{{URL::asset('avatars/user.png')}}" alt="Jason's Photo"/>
 								<span class="user-info">
 									<small>欢迎光临,</small>
 									Admin
@@ -97,6 +98,14 @@
 
                     <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
 
+                        <li>
+                            <a href="/auth/changepass">
+                                <i class="icon-user"></i>
+                                修改密码
+                            </a>
+                        </li>
+
+                        <li class="divider"></li>
                         <li>
                             <a href="/logout">
                                 <i class="icon-i fa fa-power-off fa-lg"></i>
@@ -173,7 +182,8 @@
             </ul><!-- /icon -->
 
             <div class="sidebar-collapse" id="sidebar-collapse">
-                <i class="icon-double-angle-left fa fa-angle-double-left fa-lg" aria-hidden="true" data-icon1="fa-angle-double-left" data-icon2="fa-angle-double-right"></i>
+                <i class="icon-double-angle-left fa fa-angle-double-left fa-lg" aria-hidden="true"
+                   data-icon1="fa-angle-double-left" data-icon2="fa-angle-double-right"></i>
             </div>
         </div>
 

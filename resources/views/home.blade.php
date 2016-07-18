@@ -37,7 +37,7 @@
                 <div class="row">
                     <div class="space-6"></div>
 
-                    <div class="col-sm-7 infobox-container">
+                    <div class="infobox-container">
                         <div class="infobox infobox-green  ">
                             <div class="infobox-icon">
                                 <i class="icon-user fa fa-user"></i>

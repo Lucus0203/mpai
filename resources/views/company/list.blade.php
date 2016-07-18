@@ -32,6 +32,7 @@
                     <div class="col-xs-12">
                         <div class="table-responsive">
                             <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+                                <colgroup
                                 <thead>
                                 <tr>
                                     <th>公司名称</th>
@@ -43,6 +44,7 @@
                                     <th>手机</th>
                                     <th>邮箱</th>
                                     <th>注册时间</th>
+                                    <th>最后登录时间</th>
                                     <th class="center">操作</th>
                                 </tr>
                                 </thead>
@@ -63,6 +65,7 @@
                                         <td>{{$c->mobile}}</td>
                                         <td>{{$c->email}}</td>
                                         <td>{{$c->created}}</td>
+                                        <td>{{$c->logintime}}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
                                                 <button class="btn btn-xs btn-info">

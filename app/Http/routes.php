@@ -19,6 +19,8 @@ Route::get('logout', 'Admin\AuthController@getLogout');
 
 Route::group(['middleware'=>['auth']],function(){
     Route::get('/', 'HomeController@index');
+    Route::get('/auth/changepass','Admin\ChangepassController@index');
+    Route::post('/auth/changepass','Admin\ChangepassController@changepass');
     Route::get('/company/list', 'CompanyController@index');
     Route::get('/company/failusers', 'CompanyController@failusers');
     Route::get('/course', 'CourseController@index');
