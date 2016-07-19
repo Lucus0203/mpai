@@ -54,6 +54,7 @@
                                     <th>手机</th>
                                     <th>电话</th>
                                     <th>邮箱</th>
+                                    <th>角色</th>
                                     <th class="center">注册时间</th>
                                     <th class="center">最后登录</th>
                                     <th class="center">最后操作</th>
@@ -73,6 +74,7 @@
                                         <td>{{$c->mobile}}</td>
                                         <td>{{$c->tel}}</td>
                                         <td>{{$c->email}}</td>
+                                        <td>@if($c->role==1)企业管理员@else 助理管理员 @endif</td>
                                         <td class="center">{{$c->created}}</td>
                                         <td class="center"><a href="/log/userlogin/{{$c->id}}">{{$c->logintime}}</a> </td>
                                         <td class="center"><a href="/log/useraction/{{$c->id}}">{{$c->actiontime}}</a> </td>
