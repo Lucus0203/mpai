@@ -34,11 +34,10 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="table-responsive">
-                            <colgroup>
-                                <col width="100%">
-                            </colgroup>
                             <table id="sample-table-1" class="table table-striped table-bordered table-hover">
-                                <colgroup
+                                <colgroup>
+                                    <col width="100%">
+                                </colgroup>
                                 <thead>
                                 <tr>
                                     <th>登录时间</th>

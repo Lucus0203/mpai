@@ -30,6 +30,6 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('/teacher', 'TeacherController@index');
     Route::get('/student', 'StudentController@index');
 
-    Route::get('/log/userlogin/{userid}','LogController@userlogin');
-    Route::get('/log/useraction/{userid}','LogController@useraction');
+    Route::get('/company/userlist/log/userlogin/{userid}','LogController@userlogin');
+    Route::get('/company/userlist/log/useraction/{userid}','LogController@useraction');
 });

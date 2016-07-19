@@ -32,6 +32,17 @@
                     <div class="col-xs-12">
                         <div class="table-responsive">
                             <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+                                <colgroup>
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="5%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="5%">
+                                </colgroup>
                                 <thead>
                                 <tr>
                                     <th>姓名</th>

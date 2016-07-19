@@ -155,7 +155,7 @@
                                 未激活企业
                             </a>
                         </li>
-                        <li class="{{ Request::is('company/userlist') ? 'active' : '' }}">
+                        <li class="{{ Request::is('company/userlist/*') ? 'active' : '' }}">
                             <a href="/company/userlist">
                                 <i class="icon-double-angle-right fa fa-angle-double-right"></i>
                                 管理员用户

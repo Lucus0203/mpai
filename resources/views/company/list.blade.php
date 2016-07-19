@@ -31,18 +31,17 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="table-responsive">
-                            <colgroup>
-                                <col width="10%">
-                                <col width="10%">
-                                <col width="10%">
-                                <col width="10%">
-                                <col width="10%">
-                                <col width="10%">
-                                <col width="10%">
-                                <col width="10%">
-                            </colgroup>
                             <table id="sample-table-1" class="table table-striped table-bordered table-hover">
-                                <colgroup
+                                <colgroup>
+                                    <col width="15%">
+                                    <col width="10%">
+                                    <col width="12%">
+                                    <col width="10%">
+                                    <col width="5%">
+                                    <col width="10%">
+                                    <col width="5%">
+                                    <col width="10%">
+                                </colgroup>
                                 <thead>
                                 <tr>
                                     <th>公司名称</th>

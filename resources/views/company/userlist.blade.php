@@ -31,20 +31,20 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="table-responsive">
-                            <colgroup>
-                                <col width="10%">
-                                <col width="10%">
-                                <col width="10%">
-                                <col width="10%">
-                                <col width="10%">
-                                <col width="10%">
-                                <col width="10%">
-                                <col width="10%">
-                                <col width="10%">
-                                <col width="10%">
-                            </colgroup>
                             <table id="sample-table-1" class="table table-striped table-bordered table-hover">
-                                <colgroup
+                                <colgroup>
+                                    <col width="8%">
+                                    <col width="8%">
+                                    <col width="8%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="10%">
+                                    <col width="8%">
+                                    <col width="8%">
+                                    <col width="8%">
+                                    <col width="8%">
+                                    <col width="8%">
+                                </colgroup>
                                 <thead>
                                 <tr>
                                     <th>姓名</th>
@@ -76,8 +76,8 @@
                                         <td>{{$c->email}}</td>
                                         <td>@if($c->role==1)企业管理员@else 助理管理员 @endif</td>
                                         <td class="center">{{$c->created}}</td>
-                                        <td class="center"><a href="/log/userlogin/{{$c->id}}">{{$c->logintime}}</a> </td>
-                                        <td class="center"><a href="/log/useraction/{{$c->id}}">{{$c->actiontime}}</a> </td>
+                                        <td class="center"><a href="/company/userlist/log/userlogin/{{$c->id}}">{{$c->logintime}}</a> </td>
+                                        <td class="center"><a href="/company/userlist/log/useraction/{{$c->id}}">{{$c->actiontime}}</a> </td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
                                                 <button class="btn btn-xs btn-info">

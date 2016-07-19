@@ -27,6 +27,12 @@
                     <div class="col-xs-12">
                         <div class="table-responsive">
                             <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+                                <colgroup>
+                                    <col width="20%">
+                                    <col width="20%">
+                                    <col width="20%">
+                                    <col width="20%">
+                                </colgroup>
                                 <thead>
                                 <tr>
                                     <th>手机</th>
