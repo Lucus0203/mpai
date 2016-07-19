@@ -41,6 +41,8 @@
                                     <col width="10%">
                                     <col width="5%">
                                     <col width="10%">
+                                    <col width="10%">
+                                    <col width="5%">
                                 </colgroup>
                                 <thead>
                                 <tr>
@@ -52,7 +54,7 @@
                                     <th>账号</th>
                                     <th>手机</th>
                                     <th>邮箱</th>
-                                    <th>注册时间</th>
+                                    <th class="center">注册时间</th>
                                     <th class="center">操作</th>
                                 </tr>
                                 </thead>
@@ -72,7 +74,7 @@
                                         <td>{{$c->user_name}}</td>
                                         <td>{{$c->mobile}}</td>
                                         <td>{{$c->email}}</td>
-                                        <td>{{$c->created}}</td>
+                                        <td class="center">{{$c->created}}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
                                                 <button class="btn btn-xs btn-info">
