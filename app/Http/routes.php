@@ -21,9 +21,15 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('/', 'HomeController@index');
     Route::get('/auth/changepass','Admin\ChangepassController@index');
     Route::post('/auth/changepass','Admin\ChangepassController@changepass');
+
     Route::get('/company/list', 'CompanyController@index');
     Route::get('/company/failusers', 'CompanyController@failusers');
+    Route::get('/company/userlist', 'CompanyController@userlist');
+
     Route::get('/course', 'CourseController@index');
     Route::get('/teacher', 'TeacherController@index');
     Route::get('/student', 'StudentController@index');
+
+    Route::get('/log/userlogin/{userid}','LogController@userlogin');
+    Route::get('/log/useraction/{userid}','LogController@useraction');
 });
