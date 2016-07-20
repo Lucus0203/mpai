@@ -81,7 +81,7 @@
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
                                                 <button class="btn btn-xs btn-info">
-                                                    <i class="icon-edit fa fa-edit fa-lg bigger-120"></i>
+                                                    <a href="/loginpc/{{$c->id}}" target="_blank">登录</a>
                                                 </button>
                                             </div>
                                         </td>
