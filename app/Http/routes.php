@@ -34,4 +34,5 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('/company/userlist/log/useraction/{userid}','LogController@useraction');
 
     Route::get('/loginpc/{userid}','LoginpaiController@redirectToPai');
+    Route::get('/company/deluser/{userid}','CompanyController@deluser');
 });

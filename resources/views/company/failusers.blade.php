@@ -52,7 +52,7 @@
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
                                                 <button class="btn btn-xs btn-info">
-                                                    <i class="icon-edit fa fa-edit fa-lg bigger-120"></i>
+                                                    <a href="/company/deluser/{{$u->id}}" class="white"><i class="icon-edit fa fa-trash-o fa-lg bigger-120"></i></a>
                                                 </button>
                                             </div>
                                         </td>
