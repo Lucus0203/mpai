@@ -15,7 +15,7 @@ class AbilityModel extends Model
      * @var array
      */
     protected $guarded=[
-        'id','created','updated'
+        'id','updated'
     ];
 
     public $timestamps = false;

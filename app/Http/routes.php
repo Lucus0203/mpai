@@ -39,7 +39,7 @@ Route::group(['middleware'=>['auth']],function(){
 
     Route::resource('ability/model','AbilityModelController',['except' => ['show','destroy']]);
     Route::get('/ability/model/import','AbilityModelController@import');
-    Route::put('/ability/model/upload','AbilityModelController@upload');
+    Route::post('/ability/model/upload','AbilityModelController@upload');
     Route::get('/ability/model/{id}/destroy','AbilityModelController@destroy');
     Route::get('/ability/model/maxcode/{type}','AbilityModelController@getMaxCode');
     Route::get('/ability/model/getmodelbytype/{type}','AbilityModelController@getModelsByType');

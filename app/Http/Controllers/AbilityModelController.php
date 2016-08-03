@@ -53,6 +53,7 @@ class AbilityModelController extends Controller
      */
     public function store(Requests\AbilityModelRequest $request){
         $input = $request->all();
+        $input['created']=date("Y-m-d H:i:s");
         AbilityModel::create($input);
         return redirect('/ability/model')->with('success','ok');
     }
@@ -125,6 +126,7 @@ class AbilityModelController extends Controller
                         if(empty($code)){
                             $max = AbilityModel::where('type', $ability['type'])->max('code');
                             $ability['code']=empty($max)?$ability['type'].'000001':$max+1;
+                            $ability['created']=date("Y-m-d H:i:s");
                             AbilityModel::create($ability);
                         }else{
                             $model=AbilityModel::where('code',$code)->first();
@@ -146,15 +148,15 @@ class AbilityModelController extends Controller
 
     public function destroy($id){
         $num=DB::table('pai_ability_job_model')
-            ->where('ability_model_id','=',$id)
+            ->where('model_id','=',$id)
             ->count();
         if($num<=0){
             AbilityModel::destroy($id);
             $msg['success']="ok";
-            return redirect('/ability/model')->with($msg);
+            return back()->with($msg);
         }else{
             $err[]="能力模型在使用中";
-            return redirect('/ability/model')->withErrors($err);
+            return back()->withErrors($err);
         }
     }
 

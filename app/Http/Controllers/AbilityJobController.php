@@ -45,12 +45,13 @@ class AbilityJobController extends Controller
         $data['name']=$request->name;
         $data['parent_industries_id']=$request->parent_industries_id;
         $data['industries_id']=$request->industries_id;
+        $data['created']=date("Y-m-d H:i:s");
         $job=AbilityJob::create($data);
         for ($i=1;$i<6;$i++) {
             $model = $request->input('model'.$i);
             if(!empty($model)){
                 foreach ($model as $mid) {
-                    DB::table('pai_ability_job_model')->insert(['job_id' => $job->id, 'model_id' => $mid]);
+                    DB::table('pai_ability_job_model')->insert(['job_id' => $job->id, 'model_id' => $mid,'created'=>date("Y-m-d H:i:s")]);
                 }
             }
         }
@@ -84,7 +85,7 @@ class AbilityJobController extends Controller
             $model = $request->input('model'.$i);
             if(!empty($model)){
                 foreach ($model as $mid) {
-                    DB::table('pai_ability_job_model')->insert(['job_id' => $job->id, 'model_id' => $mid]);
+                    DB::table('pai_ability_job_model')->insert(['job_id' => $job->id, 'model_id' => $mid,'created'=>date("Y-m-d H:i:s")]);
                 }
             }
         }

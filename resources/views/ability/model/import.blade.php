@@ -2,38 +2,6 @@
 
 @section('content')
     <div class="breadcrumbs" id="breadcrumbs">
-        <script src="{{URL::asset('js/jquery.validate.min.js')}}"></script>
-        <script type="text/javascript">
-            jQuery(function ($) {
-                $('#modelform').validate({
-                    errorElement: 'div',
-                    errorClass: 'help-block',
-                    focusInvalid: false,
-                    rules: {
-                        name: {
-                            required: true
-                        }
-                    },
-
-                    messages: {
-                        name: {
-                            required: "请输入名称"
-                        }
-                    },
-                    highlight: function (e) {
-                        $(e).closest('.form-group').removeClass('has-info').addClass('has-error');
-                    },
-
-                    success: function (e) {
-                        $(e).closest('.form-group').removeClass('has-error').addClass('has-info');
-                        $(e).remove();
-                    },
-                    invalidHandler: function (form) {
-                    }
-                });
-            });
-        </script>
-
         <ul class="breadcrumb">
             <li>
                 <i class="icon-i fa fa-home fa-lg"></i>
@@ -93,7 +61,7 @@
                             </strong>
                             <br />
                         </div>
-                        {{Form::open(['method'=>'PUT','url'=>'/ability/model/upload','class'=>'form-horizontal','files' => true])}}
+                        {{Form::open(['method'=>'POST','url'=>'/ability/model/upload','class'=>'form-horizontal','files' => true])}}
                         <div class="form-group">
                             <div class="col-md-12">
                                 <input class="form-control" type="file" name="excel" id="excel" />
