@@ -5,9 +5,6 @@ namespace App\Http\Controllers\Admin;
 use Admin;
 use Auth;
 use App\Http\Requests\Admin\ChangePassRequest;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 

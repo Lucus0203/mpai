@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Admin;
 use Validator;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;

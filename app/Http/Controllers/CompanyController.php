@@ -5,9 +5,6 @@ namespace App\Http\Controllers;
 use App\User;
 use DB;
 use Illuminate\Http\Request;
-use App\Http\Requests;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\URL;
 
 class CompanyController extends Controller
 {
@@ -44,7 +41,7 @@ class CompanyController extends Controller
 
     public function deluser($uid){
         User::destroy($uid);
-        return Redirect::to('/company/failusers');
+        return back();
     }
 
     public function userlist(Request $request){

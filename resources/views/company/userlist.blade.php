@@ -80,9 +80,10 @@
                                         <td class="center"><a href="/company/userlist/log/useraction/{{$c->id}}">{{$c->actiontime}}</a> </td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+                                                <a href="/loginpc/{{$c->id}}" target="_blank">
                                                 <button class="btn btn-xs btn-info">
-                                                    <a href="/loginpc/{{$c->id}}" target="_blank" class="white"><i class="icon-edit fa fa-sign-in fa-lg bigger-120"></i></a>
-                                                </button>
+                                                    <i class="icon-edit fa fa-sign-in fa-lg bigger-120"></i>
+                                                </button></a>
                                             </div>
                                         </td>
                                     </tr>

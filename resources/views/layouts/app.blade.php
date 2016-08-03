@@ -7,6 +7,8 @@
     <meta name="description" content="培训派"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="{{URL::asset('css/chosen.css')}}"/>
     <!-- basic styles -->
     <link href="{{URL::asset('css/bootstrap.min.css')}}" rel="stylesheet"/>
     <link rel="stylesheet" href="{{URL::asset('css/font-awesome.min.css')}}"/>
@@ -183,6 +185,45 @@
                         <i class="icon-i fa fa-graduation-cap fa-lg" aria-hidden="true"></i>
                         <span class="menu-text"> 讲师 </span>
                     </a>
+                </li>
+                <li>
+                    <a href="#" class="dropdown-toggle">
+                        <i class="icon-i fa fa-thumbs-up fa-lg" aria-hidden="true"></i>
+                        <span class="menu-text"> 能力模型 </span>
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+                    <ul class="submenu" {{ Request::segment(1)=='ability' ? 'style=display:block;' : '' }}>
+                        <li class="{{ Request::is('ability/model/create') ? 'active' : '' }}">
+                            <a href="/ability/model/create">
+                                <i class="icon-double-angle-right fa fa-angle-double-right"></i>
+                                创建模型
+                            </a>
+                        </li>
+                        <li class="{{ Request::is('ability/model') ? 'active' : '' }}">
+                            <a href="/ability/model">
+                                <i class="icon-double-angle-right fa fa-angle-double-right"></i>
+                                模型列表
+                            </a>
+                        </li>
+                        <li class="{{ Request::is('ability/model/import') ? 'active' : '' }}">
+                            <a href="/ability/model/import">
+                                <i class="icon-double-angle-right fa fa-angle-double-right"></i>
+                                模型导入
+                            </a>
+                        </li>
+                        <li class="{{ Request::is('ability/job/create') ? 'active' : '' }}">
+                            <a href="/ability/job/create">
+                                <i class="icon-double-angle-right fa fa-angle-double-right"></i>
+                                创建岗位能力
+                            </a>
+                        </li>
+                        <li class="{{ Request::is('ability/job') ? 'active' : '' }}">
+                            <a href="/ability/job">
+                                <i class="icon-double-angle-right fa fa-angle-double-right"></i>
+                                岗位能力列表
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
             </ul><!-- /icon -->

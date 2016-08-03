@@ -51,9 +51,11 @@
 
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+                                                <a id="deluser" href="/company/deluser/{{$u->id}}">
                                                 <button class="btn btn-xs btn-info">
-                                                    <a href="/company/deluser/{{$u->id}}" class="white"><i class="icon-edit fa fa-trash-o fa-lg bigger-120"></i></a>
+                                                    <i class="icon-edit fa fa-trash-o fa-lg bigger-120"></i>
                                                 </button>
+                                                </a>
                                             </div>
                                         </td>
                                     </tr>
@@ -75,4 +77,11 @@
         </div><!-- /.row -->
 
     </div><!-- /.page-content -->
+    <script type="text/javascript">
+        $(function(){
+            $('#deluser').click(function(){
+                return confirm('确认删除吗?');
+            });
+        })
+    </script>
 @endsection
