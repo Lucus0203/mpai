@@ -106,6 +106,7 @@
                 $('#company_wrap').show();
                 $('#parent_industries_wrap,#industries_wrap').hide();
             }
+            $('.model-select-remove').click(function(){$(this).parent().remove();});
         });
     </script>
     <div class="breadcrumbs" id="breadcrumbs">
