@@ -70,7 +70,7 @@
                         '<label class="col-sm-1 control-label no-padding-right red model-select-remove"><i class="icon-remove fa fa-remove"></i></label>' +
                         '<div class="col-sm-9">' +
                             '<select name="model'+type+'[]" class="chosen-select col-xs-10 col-sm-5 model-select" >' +
-                                '<option value="" selected >选择模型</option>' +
+                                '<option value="" selected >选择能力</option>' +
                                 opts +
                             '</select><p class="help-inline col-xs-12 model-info"></p>' +
                         '</div>' +
@@ -151,7 +151,7 @@
                         <div class="form-group">
                             <label class="col-sm-1 control-label no-padding-right" for="type-select">类型</label>
                             <div class="col-sm-2">
-                                {{ Form::select('type', array('1'=>'通用模型','2'=>'定制模型'), null, array('class' => 'form-control','id'=>'type-select')) }}
+                                {{ Form::select('type', array('1'=>'通用岗位','2'=>'定制岗位'), null, array('class' => 'form-control','id'=>'type-select')) }}
                             </div>
                         </div>
                         <div class="form-group" id="company_wrap">

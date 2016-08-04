@@ -99,9 +99,9 @@
                                         </td>
                                         <td>
                                             @if($job->type == 1)
-                                                通用模型
+                                                通用岗位
                                             @elseif($job->type == 2)
-                                                定制模型
+                                                定制岗位
                                             @endif
                                         </td>
                                         <td>{{$job->name}}</td>
