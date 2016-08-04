@@ -10,7 +10,7 @@
                 <i class="icon-home fa fa-home fa-lg"></i>
                 <a href="/">首页</a>
             </li>
-            <li class="active">模型列表</li>
+            <li class="active">能力列表</li>
         </ul><!-- .breadcrumb -->
     </div>
     <div class="page-content">
@@ -19,7 +19,7 @@
                 首页
                 <small>
                     <i class="icon-double-angle-right fa fa-angle-double-right fa-lg"></i>
-                    模型列表
+                    能力列表
                 </small>
             </h1>
         </div><!-- /.page-header -->

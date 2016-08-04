@@ -114,7 +114,7 @@
                 <i class="icon-i fa fa-home fa-lg"></i>
                 <a href="/">首页</a>
             </li>
-            <li class="active">编辑岗位能力</li>
+            <li class="active">编辑岗位</li>
         </ul><!-- .breadcrumb -->
     </div>
     <div class="page-content">
@@ -123,7 +123,7 @@
                 首页
                 <small>
                     <i class="icon-double-angle-right fa fa-angle-double-right fa-lg"></i>
-                    编辑岗位能力
+                    编辑岗位
                 </small>
             </h1>
         </div><!-- /.page-header -->

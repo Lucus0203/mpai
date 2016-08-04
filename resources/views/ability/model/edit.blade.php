@@ -53,7 +53,7 @@
                 <i class="icon-i fa fa-home fa-lg"></i>
                 <a href="/">首页</a>
             </li>
-            <li class="active">编辑模型</li>
+            <li class="active">编辑能力</li>
         </ul><!-- .breadcrumb -->
     </div>
     <div class="page-content">
@@ -63,12 +63,12 @@
                 <small>
                     <a href="{{URL::previous()}}" >
                         <i class="icon-double-angle-right fa fa-angle-double-right fa-lg"></i>
-                        模型列表
+                        能力列表
                     </a>
                 </small>
                 <small>
                     <i class="icon-double-angle-right fa fa-angle-double-right fa-lg"></i>
-                    编辑模型
+                    编辑能力
                 </small>
             </h1>
         </div><!-- /.page-header -->

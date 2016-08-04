@@ -196,31 +196,31 @@
                         <li class="{{ Request::is('ability/model/create') ? 'active' : '' }}">
                             <a href="/ability/model/create">
                                 <i class="icon-double-angle-right fa fa-angle-double-right"></i>
-                                创建模型
+                                创建能力
                             </a>
                         </li>
                         <li class="{{ Request::is('ability/model') ? 'active' : '' }}">
                             <a href="/ability/model">
                                 <i class="icon-double-angle-right fa fa-angle-double-right"></i>
-                                模型列表
+                                能力列表
                             </a>
                         </li>
                         <li class="{{ Request::is('ability/model/import') ? 'active' : '' }}">
                             <a href="/ability/model/import">
                                 <i class="icon-double-angle-right fa fa-angle-double-right"></i>
-                                模型导入
+                                能力导入
                             </a>
                         </li>
                         <li class="{{ Request::is('ability/job/create') ? 'active' : '' }}">
                             <a href="/ability/job/create">
                                 <i class="icon-double-angle-right fa fa-angle-double-right"></i>
-                                创建岗位能力
+                                创建岗位
                             </a>
                         </li>
                         <li class="{{ Request::is('ability/job') ? 'active' : '' }}">
                             <a href="/ability/job">
                                 <i class="icon-double-angle-right fa fa-angle-double-right"></i>
-                                岗位能力列表
+                                岗位列表
                             </a>
                         </li>
                     </ul>

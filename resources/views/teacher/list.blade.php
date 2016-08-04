@@ -22,7 +22,7 @@
         </div><!-- /.page-header -->
         <div class="row">
             <div class="col-sm-6">
-                {{ Form::open(['url'=>'course','method'=>'get']) }}
+                {{ Form::open(['url'=>'teacher','method'=>'get']) }}
                 <label>关键字查询: {{ Form::text('keyword',$keyword) }}</label>
                 {{ Form::close()}}
             </div>

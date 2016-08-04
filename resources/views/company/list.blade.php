@@ -22,7 +22,7 @@
         </div><!-- /.page-header -->
         <div class="row">
             <div class="col-sm-6">
-                {{ Form::open(['url'=>'company','method'=>'get']) }}
+                {{ Form::open(['url'=>'company/list','method'=>'get']) }}
                 <label>关键字查询(公司/联系人/手机/邮箱): {{ Form::text('keyword',$keyword) }}</label>
                 {{ Form::close()}}
             </div>

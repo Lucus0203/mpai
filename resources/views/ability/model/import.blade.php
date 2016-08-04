@@ -7,7 +7,7 @@
                 <i class="icon-i fa fa-home fa-lg"></i>
                 <a href="/">首页</a>
             </li>
-            <li class="active">模型导入</li>
+            <li class="active">能力导入</li>
         </ul><!-- .breadcrumb -->
     </div>
     <div class="page-content">
@@ -16,7 +16,7 @@
                 首页
                 <small>
                     <i class="icon-double-angle-right fa fa-angle-double-right fa-lg"></i>
-                    模型导入
+                    能力导入
                 </small>
             </h1>
         </div><!-- /.page-header -->
