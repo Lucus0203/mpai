@@ -39,7 +39,7 @@
                     $('#parent_industries_wrap,#industries_wrap').hide();
                 }
             });
-            $('#parent_industries_id').change(function(){
+            $('#industry_parent_id').change(function(){
                 var parentid=$(this).val();
                 var str='<option value="">全部</option>';
                 $.ajax({
@@ -51,7 +51,7 @@
                         });
                     }
                 });
-                $('#industries_id').html(str);
+                $('#industry_id').html(str);
             });
             $('.btn-model-type').click(function () {
                 var type = $('.btn-model-type').index($(this))+1;
@@ -186,12 +186,12 @@
                             </div>
                         </div>
                         <div class="form-group" id="parent_industries_wrap">
-                            <label class="col-sm-1 control-label no-padding-right" for="parent_industries_id">行业</label>
+                            <label class="col-sm-1 control-label no-padding-right" for="industry_parent_id">行业</label>
                             <div class="col-sm-2">
-                                <select name="parent_industries_id" class="form-control" id="parent_industries_id">
+                                <select name="industry_parent_id" class="form-control" id="industry_parent_id">
                                     <option value="" selected >全部</option>
                                     @foreach($parent_industries_list as $indus)
-                                        <option value="{{$indus->id}}" @if($job->parent_industries_id == $indus->id)
+                                        <option value="{{$indus->id}}" @if($job->industry_parent_id == $indus->id)
                                         selected
                                         @endif  >{{$indus->name}}</option>
                                     @endforeach
@@ -199,12 +199,12 @@
                             </div>
                         </div>
                         <div class="form-group" id="industries_wrap">
-                            <label class="col-sm-1 control-label no-padding-right" for="industries_id">领域</label>
+                            <label class="col-sm-1 control-label no-padding-right" for="industry_id">领域</label>
                             <div class="col-sm-2">
-                                <select name="industries_id" class="form-control" id="industries_id">
+                                <select name="industry_id" class="form-control" id="industry_id">
                                     <option value="" selected >全部</option>
                                     @foreach($industries_list as $ind)
-                                        <option value="{{$ind->id}}" @if($job->industries_id == $ind->id)
+                                        <option value="{{$ind->id}}" @if($job->industry_id == $ind->id)
                                         selected
                                         @endif  >{{$ind->name}}</option>
                                     @endforeach

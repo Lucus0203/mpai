@@ -43,8 +43,8 @@ class AbilityJobController extends Controller
         $data['company_code']=$request->company_code;
         $data['type']=$request->type;
         $data['name']=$request->name;
-        $data['parent_industries_id']=$request->parent_industries_id;
-        $data['industries_id']=$request->industries_id;
+        $data['industry_parent_id']=$request->industry_parent_id;
+        $data['industry_id']=$request->industry_id;
         $data['created']=date("Y-m-d H:i:s");
         $job=AbilityJob::create($data);
         for ($i=1;$i<6;$i++) {
@@ -69,15 +69,15 @@ class AbilityJobController extends Controller
             $abilitymodels['model'.$i] = AbilityModel::select('id','code','name')->where('type','=',$i)->get();
         }
         $parent_industries_list=Industries::whereNull('parent_id')->get();
-        $industries_list=Industries::where('parent_id','=',$job->parent_industries_id)->get();
+        $industries_list=Industries::where('parent_id','=',$job->industry_parent_id)->get();
         return view('ability.job.edit',compact('job','company','jobmodels','abilitymodels','parent_industries_list','industries_list'));
     }
     public function update(Request $request,$id){
         $data['company_code']=$request->company_code;
         $data['type']=$request->type;
         $data['name']=$request->name;
-        $data['parent_industries_id']=$request->parent_industries_id;
-        $data['industries_id']=$request->industries_id;
+        $data['industry_parent_id']=$request->industry_parent_id;
+        $data['industry_id']=$request->industry_id;
         $job=AbilityJob::findOrFail($id);
         $job->update($data);
         DB::table('pai_ability_job_model')->where('job_id','=',$job->id)->delete();
