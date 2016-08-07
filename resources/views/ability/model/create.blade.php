@@ -96,9 +96,15 @@
                             <div class="col-sm-2">
                                 {{ Form::text('code',$code,['class'=>'form-control col-xs-12','readonly'=>'readonly','id'=>'code']) }}
                             </div>
+                        </div>
+                        <div class="form-group">
                             <label class="col-sm-1 control-label no-padding-right" for="name">名称</label>
                             <div class="col-sm-2">
                                 {{ Form::text('name',null,['class'=>'form-control col-xs-12','placeholder'=>'请输入名称','id'=>'name']) }}
+                            </div>
+                            <label class="col-sm-1 control-label no-padding-right" for="note">名称备注</label>
+                            <div class="col-sm-2">
+                                {{ Form::text('note',null,['class'=>'form-control col-xs-12','placeholder'=>'请输入名称备注','id'=>'name']) }}
                             </div>
                         </div>
                         <div class="form-group">

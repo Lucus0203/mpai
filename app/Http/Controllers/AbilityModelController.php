@@ -171,7 +171,7 @@ class AbilityModelController extends Controller
     }
 
     public function getModelsByType($type){
-        $models = AbilityModel::select('id','code','name')->where('type','=',$type)->get();
+        $models = AbilityModel::select('id','code','name',DB::raw(' if (`note` is not null,note,"") as note '))->where('type','=',$type)->get();
         return response()->json($models);
     }
 

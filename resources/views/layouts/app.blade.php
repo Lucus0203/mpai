@@ -226,6 +226,28 @@
                     </ul>
                 </li>
 
+                <li>
+                    <a href="#" class="dropdown-toggle">
+                        <i class="icon-i fa fa-cubes fa-lg" aria-hidden="true"></i>
+                        <span class="menu-text"> 企业功能 </span>
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+                    <ul class="submenu" {{ Request::segment(1)=='order' ? 'style=display:block;' : '' }}>
+                        <li class="{{ Request::is('order') ? 'active' : '' }}">
+                            <a href="/order">
+                                <i class="icon-double-angle-right fa fa-angle-double-right"></i>
+                                功能列表
+                            </a>
+                        </li>
+                        <li class="{{ Request::is('order/create') ? 'active' : '' }}">
+                            <a href="/order/create">
+                                <i class="icon-double-angle-right fa fa-angle-double-right"></i>
+                                添加企业功能
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
             </ul><!-- /icon -->
 
             <div class="sidebar-collapse" id="sidebar-collapse">

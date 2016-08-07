@@ -62,7 +62,8 @@
                     dataType:'json',
                     success:function(res){
                         $.each( res, function( key,val ) {
-                            opts+='<option value="'+val.id+'">'+val.code+val.name+'</option>';
+                            val.note=($.trim(val.note)!='')?'('+val.note+')':'';
+                            opts+='<option value="'+val.id+'">'+val.code+val.name+val.note+'</option>';
                         });
                     }
                 });
@@ -77,7 +78,7 @@
                         '</div>';
                 $('#type'+type).append(str);
                 $('.model-select-remove').click(function(){$(this).parent().remove();});
-                $(".model-select").chosen().change(function(){
+                $(".model-select").chosen({search_contains: true,disable_search_threshold: 10}).change(function(){
                     var mid=$(this).val();
                     var obj = [];
                     var levelinfo = '';
@@ -98,7 +99,7 @@
                     $(this).parent().find('.model-info').html('<span class="col-sm-6 middle">能力描述:'+obj.info+'</span><span class="col-sm-6 middle">级数:'+obj.level+','+levelinfo+'</span>');
                 });
             });
-            $(".chosen-select").chosen();
+            $(".chosen-select").chosen({search_contains: true,disable_search_threshold: 10});
             $('#company_wrap').hide();
         });
     </script>

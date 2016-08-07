@@ -108,15 +108,21 @@
                         <div class="form-group">
                             <label class="col-sm-1 control-label no-padding-right" for="type">类型</label>
                             <div class="col-sm-2">
-                                {{ Form::select('type', $typeList, null, array('class' => 'form-control','id'=>'type')) }}
+                                {{ Form::select('type', $typeList, $model->type, array('class' => 'form-control','id'=>'type')) }}
                             </div>
                             <label class="col-sm-1 control-label no-padding-right" for="code">编号</label>
                             <div class="col-sm-2">
                                 {{ Form::text('code',$model->code,['class'=>'form-control col-xs-12','readonly'=>'readonly','id'=>'code']) }}
                             </div>
+                        </div>
+                        <div class="form-group">
                             <label class="col-sm-1 control-label no-padding-right" for="name">名称</label>
                             <div class="col-sm-2">
                                 {{ Form::text('name',$model->name,['class'=>'form-control col-xs-12','placeholder'=>'请输入名称','id'=>'name']) }}
+                            </div>
+                            <label class="col-sm-1 control-label no-padding-right" for="note">名称备注</label>
+                            <div class="col-sm-2">
+                                {{ Form::text('note',$model->note,['class'=>'form-control col-xs-12','placeholder'=>'请输入名称备注','id'=>'name']) }}
                             </div>
                         </div>
                         <div class="form-group">

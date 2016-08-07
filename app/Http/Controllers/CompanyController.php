@@ -23,7 +23,8 @@ class CompanyController extends Controller
                     $query->where('company.name','like','%'.$keyword.'%')
                         ->orWhere('company.contact','like','%'.$keyword.'%')
                         ->orWhere('company.mobile','like','%'.$keyword.'%')
-                        ->orWhere('company.email','like','%'.$keyword.'%');
+                        ->orWhere('company.email','like','%'.$keyword.'%')
+                        ->orWhere('company.code','like','%'.$keyword.'%');
                 }
             })
             ->orderBy('company.code','desc')->groupBy('user.id')->paginate(20);
@@ -56,11 +57,13 @@ class CompanyController extends Controller
                     $query->where('company.name','like','%'.$keyword.'%')
                         ->orWhere('company.contact','like','%'.$keyword.'%')
                         ->orWhere('company.mobile','like','%'.$keyword.'%')
-                        ->orWhere('company.email','like','%'.$keyword.'%');
+                        ->orWhere('company.email','like','%'.$keyword.'%')
+                        ->orWhere('company.code','like','%'.$keyword.'%');
                 }
             })
             ->orderBy('loginlog.created','desc')
             ->orderBy('company.code','desc')->groupBy('user.id')->paginate(20);
         return view('company.userlist',compact('users','keyword'));
     }
+
 }

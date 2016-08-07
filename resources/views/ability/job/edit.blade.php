@@ -62,7 +62,8 @@
                     dataType:'json',
                     success:function(res){
                         $.each( res, function( key,val ) {
-                            opts+='<option value="'+val.id+'">'+val.code+val.name+'</option>';
+                            val.note=($.trim(val.note)!='')?'('+val.note+')':'';
+                            opts+='<option value="'+val.id+'">'+val.code+val.name+val.note+'</option>';
                         });
                     }
                 });
@@ -77,7 +78,7 @@
                         '</div>';
                 $('#type'+type).append(str);
                 $('.model-select-remove').click(function(){$(this).parent().remove();});
-                $(".model-select").chosen().change(function(){
+                $(".model-select").chosen({search_contains: true,disable_search_threshold: 10}).change(function(){
                     var mid=$(this).val();
                     var obj = [];
                     var levelinfo = '';
@@ -98,7 +99,7 @@
                     $(this).parent().find('.model-info').html('<span class="col-sm-6 middle">能力描述:'+obj.info+'</span><span class="col-sm-6 middle">级数:'+obj.level+','+levelinfo+'</span>');
                 });
             });
-            $(".chosen-select").chosen();
+            $(".chosen-select").chosen({search_contains: true,disable_search_threshold: 10});
             if($('#type-select').val()==1){
                 $('#company_wrap').hide();
                 $('#parent_industries_wrap,#industries_wrap').show();
@@ -217,11 +218,11 @@
                                 <label class="col-sm-1 control-label no-padding-right">状态</label>
                                 <div class="col-sm-2 radio">
                                     <label>
-                                        {{Form::radio('status','2',true,['class'=>'ace'])}}
+                                        {{Form::radio('status','2',$job->status==2,['class'=>'ace'])}}
                                         <span class="lbl">不发布</span>
                                     </label>
                                     <label>
-                                        {{Form::radio('status','1',false,['class'=>'ace'])}}
+                                        {{Form::radio('status','1',$job->status==1,['class'=>'ace'])}}
                                         <span class="lbl">发布</span>
                                     </label>
                                 </div>
@@ -239,7 +240,7 @@
                                             @foreach($abilitymodels['model1'] as $am)
                                                 <option value="{{$am->id}}" @if($jm->code==$am->code)
                                                     selected
-                                                @endif >{{$am->name}}</option>
+                                                @endif >{{$am->code}}{{$am->name}}{{!empty($am->note)?'('.$am->note.')':''}}</option>
                                             @endforeach
                                         </select><p class="help-inline col-xs-12 model-info"><span class="col-sm-6 middle">能力描述:{{$jm->info}}</span><span class="col-sm-6 middle">级数:{{$jm->level}},<br>描述1:{{$jm->level_info1}}<br>描述2:{{$jm->level_info2}}<br>描述3:{{$jm->level_info3}}<br>描述4:{{$jm->level_info4}}<br>描述5:{{$jm->level_info5}}<br></span></p>
                                     </div>
@@ -262,7 +263,7 @@
                                             @foreach($abilitymodels['model2'] as $am)
                                                 <option value="{{$am->id}}" @if($jm->code==$am->code)
                                                 selected
-                                                        @endif >{{$am->name}}</option>
+                                                        @endif >{{$am->code}}{{$am->name}}{{!empty($am->note)?'('.$am->note.')':''}}</option>
                                             @endforeach
                                         </select><p class="help-inline col-xs-12 model-info"><span class="col-sm-6 middle">能力描述:{{$jm->info}}</span><span class="col-sm-6 middle">级数:{{$jm->level}},<br>描述1:{{$jm->level_info1}}<br>描述2:{{$jm->level_info2}}<br>描述3:{{$jm->level_info3}}<br>描述4:{{$jm->level_info4}}<br>描述5:{{$jm->level_info5}}<br></span></p>
                                     </div>
@@ -285,7 +286,7 @@
                                             @foreach($abilitymodels['model3'] as $am)
                                                 <option value="{{$am->id}}" @if($jm->code==$am->code)
                                                 selected
-                                                        @endif >{{$am->name}}</option>
+                                                        @endif >{{$am->code}}{{$am->name}}{{!empty($am->note)?'('.$am->note.')':''}}</option>
                                             @endforeach
                                         </select><p class="help-inline col-xs-12 model-info"><span class="col-sm-6 middle">能力描述:{{$jm->info}}</span><span class="col-sm-6 middle">级数:{{$jm->level}},<br>描述1:{{$jm->level_info1}}<br>描述2:{{$jm->level_info2}}<br>描述3:{{$jm->level_info3}}<br>描述4:{{$jm->level_info4}}<br>描述5:{{$jm->level_info5}}<br></span></p>
                                     </div>
@@ -308,7 +309,7 @@
                                             @foreach($abilitymodels['model4'] as $am)
                                                 <option value="{{$am->id}}" @if($jm->code==$am->code)
                                                 selected
-                                                        @endif >{{$am->name}}</option>
+                                                        @endif >{{$am->code}}{{$am->name}}{{!empty($am->note)?'('.$am->note.')':''}}</option>
                                             @endforeach
                                         </select><p class="help-inline col-xs-12 model-info"><span class="col-sm-6 middle">能力描述:{{$jm->info}}</span><span class="col-sm-6 middle">级数:{{$jm->level}},<br>描述1:{{$jm->level_info1}}<br>描述2:{{$jm->level_info2}}<br>描述3:{{$jm->level_info3}}<br>描述4:{{$jm->level_info4}}<br>描述5:{{$jm->level_info5}}<br></span></p>
                                     </div>
@@ -331,7 +332,7 @@
                                             @foreach($abilitymodels['model5'] as $am)
                                                 <option value="{{$am->id}}" @if($jm->code==$am->code)
                                                 selected
-                                                        @endif >{{$am->name}}</option>
+                                                        @endif >{{$am->code}}{{$am->name}}{{!empty($am->note)?'('.$am->note.')':''}}</option>
                                             @endforeach
                                         </select><p class="help-inline col-xs-12 model-info"><span class="col-sm-6 middle">能力描述:{{$jm->info}}</span><span class="col-sm-6 middle">级数:{{$jm->level}},<br>描述1:{{$jm->level_info1}}<br>描述2:{{$jm->level_info2}}<br>描述3:{{$jm->level_info3}}<br>描述4:{{$jm->level_info4}}<br>描述5:{{$jm->level_info5}}<br></span></p>
                                     </div>

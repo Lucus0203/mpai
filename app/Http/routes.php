@@ -52,4 +52,9 @@ Route::group(['middleware'=>['auth']],function(){
 
     Route::get('/ajax/industries/{parent_id}','AjaxController@getIndustriesByParent');
 
+    Route::resource('order','OrderController',['except' => ['show','destroy']]);
+    Route::get('/order/{id}/destroy','OrderController@destroy');
+    Route::get('/order/{id}/checked','OrderController@checked');
+    Route::get('/order/{id}/unchecked','OrderController@unchecked');
+
 });
