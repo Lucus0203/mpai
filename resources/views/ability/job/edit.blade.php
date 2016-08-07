@@ -182,7 +182,7 @@
                                     @foreach($company as $c)
                                         <option value="{{$c->code}}" @if($job->company_code == $c->code)
                                                 selected
-                                                @endif >{{$c->name}}</option>
+                                                @endif >{{$c->code}}{{$c->name}}</option>
                                     @endforeach
                                 </select>
                             </div>

@@ -103,7 +103,7 @@
                                 <select name="company_code" class="width-80 chosen-select" id="company_code" >
                                     <option value="" selected>全部</option>
                                     @foreach($company as $c)
-                                        <option value="{{$c->code}}" >{{$c->name}}</option>
+                                        <option value="{{$c->code}}" >{{$c->code}}{{$c->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
