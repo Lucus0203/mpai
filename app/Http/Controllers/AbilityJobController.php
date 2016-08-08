@@ -49,9 +49,13 @@ class AbilityJobController extends Controller
         $job=AbilityJob::create($data);
         for ($i=1;$i<6;$i++) {
             $model = $request->input('model'.$i);
+            $levelstandard = $request->input('standard'.$i);
             if(!empty($model)){
-                foreach ($model as $mid) {
-                    DB::table('pai_ability_job_model')->insert(['job_id' => $job->id, 'model_id' => $mid,'created'=>date("Y-m-d H:i:s")]);
+                foreach ($model as $k => $mid) {
+                    if(!empty($mid)){
+                        $l=!empty($levelstandard[$k])?trim($levelstandard[$k]):1;
+                        DB::table('pai_ability_job_model')->insert(['job_id' => $job->id, 'model_id' => $mid,'level_standard'=>$l,'created'=>date("Y-m-d H:i:s")]);
+                    }
                 }
             }
         }
@@ -62,7 +66,7 @@ class AbilityJobController extends Controller
         $company=Company::select('code','name')->get();
         for ($i=1;$i<6;$i++){
             $jobmodels['model'.$i]=DB::table('pai_ability_model as ability_model')
-                ->select('ability_job_model.id as ajmid','ability_model.code','ability_model.name','ability_model.info','ability_model.level','ability_model.level_info1','ability_model.level_info2','ability_model.level_info3','ability_model.level_info4','ability_model.level_info5','ability_model.level_info6','ability_model.level_info7','ability_model.level_info8','ability_model.level_info9','ability_model.level_info10')
+                ->select('ability_job_model.id as ajmid','ability_job_model.level_standard','ability_model.code','ability_model.name','ability_model.info','ability_model.level','ability_model.level_info1','ability_model.level_info2','ability_model.level_info3','ability_model.level_info4','ability_model.level_info5','ability_model.level_info6','ability_model.level_info7','ability_model.level_info8','ability_model.level_info9','ability_model.level_info10')
                 ->leftJoin('pai_ability_job_model as ability_job_model','ability_job_model.model_id','=','ability_model.id')
             ->where('ability_model.type','=',$i)
             ->where('ability_job_model.job_id','=',$id)->get();
@@ -83,9 +87,13 @@ class AbilityJobController extends Controller
         DB::table('pai_ability_job_model')->where('job_id','=',$job->id)->delete();
         for ($i=1;$i<6;$i++) {
             $model = $request->input('model'.$i);
+            $levelstandard = $request->input('standard'.$i);
             if(!empty($model)){
-                foreach ($model as $mid) {
-                    DB::table('pai_ability_job_model')->insert(['job_id' => $job->id, 'model_id' => $mid,'created'=>date("Y-m-d H:i:s")]);
+                foreach ($model as $k => $mid) {
+                    if(!empty($mid)){
+                        $l=!empty($levelstandard[$k])?trim($levelstandard[$k]):1;
+                        DB::table('pai_ability_job_model')->insert(['job_id' => $job->id, 'model_id' => $mid,'level_standard'=>$l,'created'=>date("Y-m-d H:i:s")]);
+                    }
                 }
             }
         }

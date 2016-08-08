@@ -13,11 +13,81 @@
                 rules: {
                     name: {
                         required: true
+                    },
+                    'standard1[]':{
+                        required: true,
+                        digits:true
+                    },
+                    'standard2[]':{
+                        required: true,
+                        digits:true
+                    },
+                    'standard3[]':{
+                        required: true,
+                        digits:true
+                    },
+                    'standard4[]':{
+                        required: true,
+                        digits:true
+                    },
+                    'standard5[]':{
+                        required: true,
+                        digits:true
+                    },
+                    'model1[]':{
+                        required: true
+                    },
+                    'model2[]':{
+                        required: true
+                    },
+                    'model3[]':{
+                        required: true
+                    },
+                    'model4[]':{
+                        required: true
+                    },
+                    'model5[]':{
+                        required: true
                     }
                 },
                 messages: {
                     name: {
                         required: "请输入岗位名称"
+                    },
+                    'standard1[]':{
+                        required: "专业能力等级标准不能为空",
+                        digits:"必须是整数"
+                    },
+                    'standard2[]':{
+                        required: "通用能力等级标准不能为空",
+                        digits:"必须是整数"
+                    },
+                    'standard3[]':{
+                        required: "领导力力等级标准不能为空",
+                        digits:"必须是整数"
+                    },
+                    'standard4[]':{
+                        required: "个性等级标准不能为空",
+                        digits:"必须是整数"
+                    },
+                    'standard5[]':{
+                        required: "经验等级标准不能为空",
+                        digits:"必须是整数"
+                    },
+                    'model1[]':{
+                        required: "请选择专业能力"
+                    },
+                    'model2[]':{
+                        required: "请选择通用能力"
+                    },
+                    'model3[]':{
+                        required: "请选择领导力"
+                    },
+                    'model4[]':{
+                        required: "请选择个性"
+                    },
+                    'model5[]':{
+                        required: "请选择经验"
                     }
                 },
                 highlight: function (e) {
@@ -42,15 +112,17 @@
             $('#industry_parent_id').change(function(){
                 var parentid=$(this).val();
                 var str='<option value="">全部</option>';
-                $.ajax({
-                    url:'/ajax/industries/'+parentid,
-                    async: false,
-                    success:function(res){
-                        $.each( res, function( key,val ) {
-                            str+='<option value="'+val.id+'">'+val.name+'</option>';
-                        });
-                    }
-                });
+                if($.trim(parentid)!='') {
+                    $.ajax({
+                        url: '/ajax/industries/' + parentid,
+                        async: false,
+                        success: function (res) {
+                            $.each(res, function (key, val) {
+                                str += '<option value="' + val.id + '">' + val.name + '</option>';
+                            });
+                        }
+                    });
+                }
                 $('#industry_id').html(str);
             });
             $('.btn-model-type').click(function () {
@@ -68,7 +140,8 @@
                     }
                 });
                 var str='<div class="form-group">' +
-                        '<label class="col-sm-1 control-label no-padding-right red model-select-remove"><i class="icon-remove fa fa-remove"></i></label>' +
+                        '<label class="col-sm-1 control-label no-padding-left red model-select-remove"><i class="icon-remove fa fa-remove"></i></label>' +
+                        '<input type="text" class="col-sm-1 control-label center " placeholder="等级标准" value="" name="standard'+type+'[]" />'+
                         '<div class="col-sm-9">' +
                         '<select name="model'+type+'[]" class="chosen-select col-xs-10 col-sm-5 model-select" >' +
                         '<option value="" selected >选择能力</option>' +
@@ -182,7 +255,7 @@
                                     @foreach($company as $c)
                                         <option value="{{$c->code}}" @if($job->company_code == $c->code)
                                                 selected
-                                                @endif >{{$c->code}}{{$c->name}}</option>
+                                                @endif >{{$c->code}} {{$c->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -228,121 +301,55 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="hr hr-18 hr-dotted"></div>
-                        <h2><small>专业能力</small></h2>
-                        <div id="type1">
-                            @foreach($jobmodels['model1'] as $jm)
-                                <div class="form-group">
-                                    <label class="col-sm-1 control-label no-padding-right red model-select-remove"><i class="icon-remove fa fa-remove"></i></label>
-                                    <div class="col-sm-9">
-                                        <select name="model1[]" class="chosen-select col-xs-10 col-sm-5 model-select" >'
-                                            <option value="" >选择能力</option>
-                                            @foreach($abilitymodels['model1'] as $am)
-                                                <option value="{{$am->id}}" @if($jm->code==$am->code)
-                                                    selected
-                                                @endif >{{$am->code}}{{$am->name}}{{!empty($am->note)?'('.$am->note.')':''}}</option>
-                                            @endforeach
-                                        </select><p class="help-inline col-xs-12 model-info"><span class="col-sm-6 middle">能力描述:{{$jm->info}}</span><span class="col-sm-6 middle">级数:{{$jm->level}},<br>描述1:{{$jm->level_info1}}<br>描述2:{{$jm->level_info2}}<br>描述3:{{$jm->level_info3}}<br>描述4:{{$jm->level_info4}}<br>描述5:{{$jm->level_info5}}<br></span></p>
+                        @for($modindex=1;$modindex<6;$modindex++)
+                            <div class="hr hr-18 hr-dotted"></div>
+                            <h2><small>
+                                    @if($modindex==1)
+                                        专业能力
+                                    @elseif($modindex==2)
+                                        通用能力
+                                    @elseif($modindex==3)
+                                        领导力
+                                    @elseif($modindex==4)
+                                        个性
+                                    @elseif($modindex==5)
+                                        经验
+                                    @endif
+                                </small></h2>
+                            <div id="type{{$modindex}}">
+                                @foreach($jobmodels['model'.$modindex] as $jm)
+                                    <div class="form-group">
+                                        <label class="col-sm-1 control-label no-padding-left red model-select-remove"><i class="icon-remove fa fa-remove"></i></label>
+                                        <input type="text" class="col-sm-1 control-label center " placeholder="等级标准" value="{{$jm->level_standard}}" name="standard{{$modindex}}[]" />
+                                        <div class="col-sm-9">
+                                            <select name="model{{$modindex}}[]" class="chosen-select col-sm-5 model-select" >'
+                                                <option value="" >选择能力</option>
+                                                @foreach($abilitymodels['model'.$modindex] as $am)
+                                                    <option value="{{$am->id}}" @if($jm->code==$am->code)
+                                                        selected
+                                                    @endif >{{$am->code}}{{$am->name}}{{!empty($am->note)?'('.$am->note.')':''}}</option>
+                                                @endforeach
+                                            </select><p class="help-inline col-xs-12 model-info"><span class="col-sm-6 middle">能力描述:{{$jm->info}}</span><span class="col-sm-6 middle">级数:{{$jm->level}},
+                                                    {!! (!empty($jm->level_info1))?'<br>描述1:'.$jm->level_info1:'' !!}
+                                                    {!! (!empty($jm->level_info2))?'<br>描述2:'.$jm->level_info2:'' !!}
+                                                    {!! (!empty($jm->level_info3))?'<br>描述3:'.$jm->level_info3:'' !!}
+                                                    {!! (!empty($jm->level_info4))?'<br>描述4:'.$jm->level_info4:'' !!}
+                                                    {!! (!empty($jm->level_info5))?'<br>描述5:'.$jm->level_info5:'' !!}
+                                                    {!! (!empty($jm->level_info6))?'<br>描述6:'.$jm->level_info6:'' !!}
+                                                    {!! (!empty($jm->level_info7))?'<br>描述7:'.$jm->level_info7:'' !!}
+                                                    {!! (!empty($jm->level_info8))?'<br>描述8:'.$jm->level_info8:'' !!}
+                                                    {!! (!empty($jm->level_info9))?'<br>描述9:'.$jm->level_info9:'' !!}
+                                                    {!! (!empty($jm->level_info10))?'<br>描述10:'.$jm->level_info10:'' !!}
+                                                    </span></p>
+                                        </div>
                                     </div>
-                                </div>
-                            @endforeach
-                        </div>
-                        <button class="btn btn-info btn-model-type" type="button">
-                            <i class="icon-ok bigger-110"></i>
-                            添加
-                        </button>
-                        <div class="hr hr-18 hr-dotted"></div>
-                        <h2><small>通用能力</small></h2>
-                        <div id="type2">
-                            @foreach($jobmodels['model2'] as $jm)
-                                <div class="form-group">
-                                    <label class="col-sm-1 control-label no-padding-right red model-select-remove"><i class="icon-remove fa fa-remove"></i></label>
-                                    <div class="col-sm-9">
-                                        <select name="model2[]" class="chosen-select col-xs-10 col-sm-5 model-select" >'
-                                            <option value="" >选择能力</option>
-                                            @foreach($abilitymodels['model2'] as $am)
-                                                <option value="{{$am->id}}" @if($jm->code==$am->code)
-                                                selected
-                                                        @endif >{{$am->code}}{{$am->name}}{{!empty($am->note)?'('.$am->note.')':''}}</option>
-                                            @endforeach
-                                        </select><p class="help-inline col-xs-12 model-info"><span class="col-sm-6 middle">能力描述:{{$jm->info}}</span><span class="col-sm-6 middle">级数:{{$jm->level}},<br>描述1:{{$jm->level_info1}}<br>描述2:{{$jm->level_info2}}<br>描述3:{{$jm->level_info3}}<br>描述4:{{$jm->level_info4}}<br>描述5:{{$jm->level_info5}}<br></span></p>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                        <button class="btn btn-info btn-model-type" type="button">
-                            <i class="icon-ok bigger-110"></i>
-                            添加
-                        </button>
-                        <div class="hr hr-18 hr-dotted"></div>
-                        <h2><small>领导力</small></h2>
-                        <div id="type3">
-                            @foreach($jobmodels['model3'] as $jm)
-                                <div class="form-group">
-                                    <label class="col-sm-1 control-label no-padding-right red model-select-remove"><i class="icon-remove fa fa-remove"></i></label>
-                                    <div class="col-sm-9">
-                                        <select name="model3[]" class="chosen-select col-xs-10 col-sm-5 model-select" >'
-                                            <option value="" >选择能力</option>
-                                            @foreach($abilitymodels['model3'] as $am)
-                                                <option value="{{$am->id}}" @if($jm->code==$am->code)
-                                                selected
-                                                        @endif >{{$am->code}}{{$am->name}}{{!empty($am->note)?'('.$am->note.')':''}}</option>
-                                            @endforeach
-                                        </select><p class="help-inline col-xs-12 model-info"><span class="col-sm-6 middle">能力描述:{{$jm->info}}</span><span class="col-sm-6 middle">级数:{{$jm->level}},<br>描述1:{{$jm->level_info1}}<br>描述2:{{$jm->level_info2}}<br>描述3:{{$jm->level_info3}}<br>描述4:{{$jm->level_info4}}<br>描述5:{{$jm->level_info5}}<br></span></p>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                        <button class="btn btn-info btn-model-type" type="button">
-                            <i class="icon-ok bigger-110"></i>
-                            添加
-                        </button>
-                        <div class="hr hr-18 hr-dotted"></div>
-                        <h2><small>个性</small></h2>
-                        <div id="type4">
-                            @foreach($jobmodels['model4'] as $jm)
-                                <div class="form-group">
-                                    <label class="col-sm-1 control-label no-padding-right red model-select-remove"><i class="icon-remove fa fa-remove"></i></label>
-                                    <div class="col-sm-9">
-                                        <select name="model4[]" class="chosen-select col-xs-10 col-sm-5 model-select" >'
-                                            <option value="" >选择能力</option>
-                                            @foreach($abilitymodels['model4'] as $am)
-                                                <option value="{{$am->id}}" @if($jm->code==$am->code)
-                                                selected
-                                                        @endif >{{$am->code}}{{$am->name}}{{!empty($am->note)?'('.$am->note.')':''}}</option>
-                                            @endforeach
-                                        </select><p class="help-inline col-xs-12 model-info"><span class="col-sm-6 middle">能力描述:{{$jm->info}}</span><span class="col-sm-6 middle">级数:{{$jm->level}},<br>描述1:{{$jm->level_info1}}<br>描述2:{{$jm->level_info2}}<br>描述3:{{$jm->level_info3}}<br>描述4:{{$jm->level_info4}}<br>描述5:{{$jm->level_info5}}<br></span></p>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                        <button class="btn btn-info btn-model-type" type="button">
-                            <i class="icon-ok bigger-110"></i>
-                            添加
-                        </button>
-                        <div class="hr hr-18 hr-dotted"></div>
-                        <h2><small>经验</small></h2>
-                        <div id="type5">
-                            @foreach($jobmodels['model5'] as $jm)
-                                <div class="form-group">
-                                    <label class="col-sm-1 control-label no-padding-right red model-select-remove"><i class="icon-remove fa fa-remove"></i></label>
-                                    <div class="col-sm-9">
-                                        <select name="model5[]" class="chosen-select col-xs-10 col-sm-5 model-select" >'
-                                            <option value="" >选择能力</option>
-                                            @foreach($abilitymodels['model5'] as $am)
-                                                <option value="{{$am->id}}" @if($jm->code==$am->code)
-                                                selected
-                                                        @endif >{{$am->code}}{{$am->name}}{{!empty($am->note)?'('.$am->note.')':''}}</option>
-                                            @endforeach
-                                        </select><p class="help-inline col-xs-12 model-info"><span class="col-sm-6 middle">能力描述:{{$jm->info}}</span><span class="col-sm-6 middle">级数:{{$jm->level}},<br>描述1:{{$jm->level_info1}}<br>描述2:{{$jm->level_info2}}<br>描述3:{{$jm->level_info3}}<br>描述4:{{$jm->level_info4}}<br>描述5:{{$jm->level_info5}}<br></span></p>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                        <button class="btn btn-info btn-model-type" type="button">
-                            <i class="icon-ok bigger-110"></i>
-                            添加
-                        </button>
+                                @endforeach
+                            </div>
+                            <button class="btn btn-info btn-model-type" type="button">
+                                <i class="icon-ok bigger-110"></i>
+                                添加
+                            </button>
+                        @endfor
 
                         <div class="clearfix form-actions">
                             <div class="col-md-offset-4 col-md-9">

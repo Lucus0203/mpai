@@ -23,6 +23,8 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('/company/list', 'CompanyController@index');
     Route::get('/company/failusers', 'CompanyController@failusers');
     Route::get('/company/userlist', 'CompanyController@userlist');
+    Route::get('/company/{companyid}/edit','CompanyController@edit');
+    Route::put('/company/{companyid}/store','CompanyController@store');
 
     Route::get('/course', 'CourseController@index');
     Route::get('/teacher', 'TeacherController@index');

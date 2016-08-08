@@ -13,11 +13,81 @@
                 rules: {
                     name: {
                         required: true
+                    },
+                    'standard1[]':{
+                        required: true,
+                        digits:true
+                    },
+                    'standard2[]':{
+                        required: true,
+                        digits:true
+                    },
+                    'standard3[]':{
+                        required: true,
+                        digits:true
+                    },
+                    'standard4[]':{
+                        required: true,
+                        digits:true
+                    },
+                    'standard5[]':{
+                        required: true,
+                        digits:true
+                    },
+                    'model1[]':{
+                        required: true
+                    },
+                    'model2[]':{
+                        required: true
+                    },
+                    'model3[]':{
+                        required: true
+                    },
+                    'model4[]':{
+                        required: true
+                    },
+                    'model5[]':{
+                        required: true
                     }
                 },
                 messages: {
                     name: {
                         required: "请输入岗位名称"
+                    },
+                    'standard1[]':{
+                        required: "专业能力等级标准不能为空",
+                        digits:"必须是整数"
+                    },
+                    'standard2[]':{
+                        required: "通用能力等级标准不能为空",
+                        digits:"必须是整数"
+                    },
+                    'standard3[]':{
+                        required: "领导力力等级标准不能为空",
+                        digits:"必须是整数"
+                    },
+                    'standard4[]':{
+                        required: "个性等级标准不能为空",
+                        digits:"必须是整数"
+                    },
+                    'standard5[]':{
+                        required: "经验等级标准不能为空",
+                        digits:"必须是整数"
+                    },
+                    'model1[]':{
+                        required: "请选择专业能力"
+                    },
+                    'model2[]':{
+                        required: "请选择通用能力"
+                    },
+                    'model3[]':{
+                        required: "请选择领导力"
+                    },
+                    'model4[]':{
+                        required: "请选择个性"
+                    },
+                    'model5[]':{
+                        required: "请选择经验"
                     }
                 },
                 highlight: function (e) {
@@ -42,15 +112,17 @@
             $('#industry_parent_id').change(function(){
                 var parentid=$(this).val();
                 var str='<option value="">全部</option>';
-                $.ajax({
-                    url:'/ajax/industries/'+parentid,
-                    async: false,
-                    success:function(res){
-                        $.each( res, function( key,val ) {
-                            str+='<option value="'+val.id+'">'+val.name+'</option>';
-                        });
-                    }
-                });
+                if($.trim(parentid)!=''){
+                    $.ajax({
+                        url:'/ajax/industries/'+parentid,
+                        async: false,
+                        success:function(res){
+                            $.each( res, function( key,val ) {
+                                str+='<option value="'+val.id+'">'+val.name+'</option>';
+                            });
+                        }
+                    });
+                }
                 $('#industry_id').html(str);
             });
             $('.btn-model-type').click(function () {
@@ -68,7 +140,8 @@
                     }
                 });
                 var str='<div class="form-group">' +
-                        '<label class="col-sm-1 control-label no-padding-right red model-select-remove"><i class="icon-remove fa fa-remove"></i></label>' +
+                        '<label class="col-sm-1 control-label no-padding-left red model-select-remove"><i class="icon-remove fa fa-remove"></i></label>' +
+                        '<input type="text" class="col-sm-1 control-label center " placeholder="等级标准" value="" name="standard'+type+'[]" />'+
                         '<div class="col-sm-9">' +
                             '<select name="model'+type+'[]" class="chosen-select col-xs-10 col-sm-5 model-select" >' +
                                 '<option value="" selected >选择能力</option>' +
@@ -161,7 +234,7 @@
                                 <select name="company_code" class="width-80 chosen-select" id="company_code" >
                                     <option value="" selected>全部</option>
                                     @foreach($company as $c)
-                                        <option value="{{$c->code}}" >{{$c->code}}{{$c->name}}</option>
+                                        <option value="{{$c->code}}" >{{$c->code}} {{$c->name}}</option>
                                     @endforeach
                                 </select>
                             </div>

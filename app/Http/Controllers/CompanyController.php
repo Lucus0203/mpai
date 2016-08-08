@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
 use App\User;
 use DB;
 use Illuminate\Http\Request;
@@ -12,7 +13,7 @@ class CompanyController extends Controller
     public function index(Request $request){
         $keyword = $request->input('keyword');
         $companys=DB::table('pai_company as company')
-            ->select('company.id','company.code','company.name','company.logo','company.contact','company.mobile','company.tel','company.email','user.user_name','user.created','parent_industry.name as parent_industry_name','industry.name as industry_name')
+            ->select('company.id','company.code','company.name','company.logo','company.contact','company.mobile','company.tel','company.email','company.note','company.updated','user.user_name','user.created','parent_industry.name as parent_industry_name','industry.name as industry_name')
             ->leftJoin('pai_user as user',function($join){
                 $join->on('company.code','=','user.company_code')->where('user.role','=','1');
             })
@@ -64,6 +65,18 @@ class CompanyController extends Controller
             ->orderBy('loginlog.created','desc')
             ->orderBy('company.code','desc')->groupBy('user.id')->paginate(20);
         return view('company.userlist',compact('users','keyword'));
+    }
+
+    public function edit($companyid){
+        $company=Company::findOrFail($companyid);
+        $user=User::where('company_code',$company['code'])->where('role',1)->first();
+        return view('company.edit',compact('company','user'));
+    }
+    public function store(Request $request,$companyid){
+        $company=Company::findOrFail($companyid);
+        $company->note=$request->note;
+        $company->update();
+        return back()->with('success','ok');
     }
 
 }

@@ -37,10 +37,9 @@
                                     <col width="10%">
                                     <col width="12%">
                                     <col width="10%">
-                                    <col width="5%">
                                     <col width="10%">
-                                    <col width="5%">
                                     <col width="10%">
+                                    <col width="15%">
                                     <col width="10%">
                                     <col width="5%">
                                 </colgroup>
@@ -49,12 +48,11 @@
                                     <th>公司名称</th>
                                     <th>公司编号</th>
                                     <th>所属行业</th>
-                                    <th class="center">logo</th>
-                                    <th>联系人</th>
-                                    <th>账号</th>
-                                    <th>手机</th>
-                                    <th>邮箱</th>
+                                    <th class="center">联系人</th>
+                                    <th class="center">手机</th>
                                     <th class="center">注册时间</th>
+                                    <th class="center">备注</th>
+                                    <th class="center">备注时间</th>
                                     <th class="center">操作</th>
                                 </tr>
                                 </thead>
@@ -67,19 +65,18 @@
                                         </td>
                                         <td>{{$c->code}}</td>
                                         <td>{{$c->parent_industry_name}} {{$c->industry_name}}</td>
-                                        <td class="center"><img height="50"
-                                                                src="{{$c->logo ? env('WEB_SITE').'uploads/company_logo/'.$c->logo : env('WEB_SITE').'images/face_default.png'}}" />
-                                        </td>
                                         <td>{{$c->contact}}</td>
-                                        <td>{{$c->user_name}}</td>
                                         <td>{{$c->mobile}}</td>
-                                        <td>{{$c->email}}</td>
                                         <td class="center">{{$c->created}}</td>
+                                        <td>{{mb_substr($c->note,0,10,'utf-8')}}</td>
+                                        <td class="center">{{date("m-d H:i",strtotime($c->updated))}}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
-                                                <button class="btn btn-xs btn-info">
-                                                    <i class="icon-edit fa fa-edit fa-lg bigger-120"></i>
-                                                </button>
+                                                <a href="/company/{{$c->id}}/edit">
+                                                    <button class="btn btn-xs btn-info">
+                                                        <i class="icon-edit fa fa-edit fa-lg bigger-120"></i>
+                                                    </button>
+                                                </a>
                                             </div>
                                         </td>
                                     </tr>
