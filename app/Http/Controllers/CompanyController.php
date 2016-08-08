@@ -72,11 +72,17 @@ class CompanyController extends Controller
         $user=User::where('company_code',$company['code'])->where('role',1)->first();
         return view('company.edit',compact('company','user'));
     }
-    public function store(Request $request,$companyid){
+    public function update(Request $request,$companyid){
         $company=Company::findOrFail($companyid);
         $company->note=$request->note;
         $company->update();
         return back()->with('success','ok');
+    }
+    public function updatenote(Request $request,$companyid){
+        $company=Company::findOrFail($companyid);
+        $company->note=$request->note;
+        $company->update();
+        return response()->json(array('success'=>'ok'));
     }
 
 }

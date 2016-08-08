@@ -1,6 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
+    <script>
+        $(function () {
+            $('.editNote').click(function(){
+                var index=$('.editNote').index($(this));
+                $('.noteSapn').eq(index).hide();
+                $('input[name=note]').eq(index).attr('type','text');
+                return false;
+            });
+            $('input[name=note]').blur(function(){
+                var index=$('input[name=note]').index($(this));
+                var cid=$('input[name=companyid]').eq(index).val();
+                var note=$(this).val();
+                $.ajax({
+                    url:'/company/'+cid+'/updatenote',
+                    type:'get',
+                    data:{'note':note},
+                    dataType:'json',
+                    success:function(res){
+                        if(res.success=='ok'){
+                            $('input[name=note]').eq(index).attr('type','hidden');
+                            $('.noteSapn').eq(index).text(note).show();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
     <div class="breadcrumbs" id="breadcrumbs">
         <ul class="breadcrumb">
             <li>
@@ -61,18 +88,19 @@
                                 @foreach($companys as $c)
                                     <tr>
                                         <td>
-                                            <a href="#">{{$c->name}}</a>
+                                            <input type="hidden" name="companyid" value="{!! $c->id !!}" />
+                                            <a href="/company/{{$c->id}}/edit">{{$c->name}}</a>
                                         </td>
                                         <td>{{$c->code}}</td>
                                         <td>{{$c->parent_industry_name}} {{$c->industry_name}}</td>
                                         <td>{{$c->contact}}</td>
                                         <td>{{$c->mobile}}</td>
                                         <td class="center">{{$c->created}}</td>
-                                        <td>{{mb_substr($c->note,0,10,'utf-8')}}</td>
+                                        <td><input type="hidden" name="note" value="{!! $c->note !!}" /><span class="noteSapn">{!! $c->note !!}</span></td>
                                         <td class="center">{{date("m-d H:i",strtotime($c->updated))}}</td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
-                                                <a href="/company/{{$c->id}}/edit">
+                                                <a href="#" class="editNote">
                                                     <button class="btn btn-xs btn-info">
                                                         <i class="icon-edit fa fa-edit fa-lg bigger-120"></i>
                                                     </button>

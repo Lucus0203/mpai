@@ -24,7 +24,8 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('/company/failusers', 'CompanyController@failusers');
     Route::get('/company/userlist', 'CompanyController@userlist');
     Route::get('/company/{companyid}/edit','CompanyController@edit');
-    Route::put('/company/{companyid}/store','CompanyController@store');
+    Route::put('/company/{companyid}/update','CompanyController@update');
+    Route::get('/company/{companyid}/updatenote','CompanyController@updatenote');
 
     Route::get('/course', 'CourseController@index');
     Route::get('/teacher', 'TeacherController@index');

@@ -52,7 +52,7 @@
                                 <br />
                             </div>
                         @endif
-                        {{Form::open(['method'=>'put','url'=>'/company/'.$company->id.'/store','class'=>'form-horizontal','role'=>'form','id'=>'companyform'])}}
+                        {{Form::open(['method'=>'put','url'=>'/company/'.$company->id.'/update','class'=>'form-horizontal','role'=>'form','id'=>'companyform'])}}
                             <div class="form-group">
                                 {{ Form::label('code', '企业编号', array('class' => 'col-sm-1 control-label')) }}
                                 <div class="col-sm-2">
