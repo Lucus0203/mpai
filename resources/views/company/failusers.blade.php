@@ -48,8 +48,8 @@
                                     <tr>
                                         <td>{{$u->mobile}}</td>
                                         <td>{{$u->mobile_code}}</td>
-                                        <td>{{$u->created}}</td>
                                         <td>{{$u->ip_address}}</td>
+                                        <td>{{$u->created}}</td>
 
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
