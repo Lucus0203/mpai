@@ -37,8 +37,8 @@
                                 <tr>
                                     <th>手机</th>
                                     <th>验证码</th>
-                                    <th>注册时间</th>
                                     <th>注册IP</th>
+                                    <th>注册时间</th>
                                     <th class="center">操作</th>
                                 </tr>
                                 </thead>
