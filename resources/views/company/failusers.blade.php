@@ -38,6 +38,7 @@
                                     <th>手机</th>
                                     <th>验证码</th>
                                     <th>注册时间</th>
+                                    <th>注册IP</th>
                                     <th class="center">操作</th>
                                 </tr>
                                 </thead>
@@ -48,6 +49,7 @@
                                         <td>{{$u->mobile}}</td>
                                         <td>{{$u->mobile_code}}</td>
                                         <td>{{$u->created}}</td>
+                                        <td>{{$u->ip_address}}</td>
 
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
