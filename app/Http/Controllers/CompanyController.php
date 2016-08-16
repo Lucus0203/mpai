@@ -62,8 +62,8 @@ class CompanyController extends Controller
                         ->orWhere('company.code','like','%'.$keyword.'%');
                 }
             })
-            ->orderBy('loginlog.created','desc')
             ->orderBy('actionlog.created','desc')
+            ->orderBy('loginlog.created','desc')
             ->groupBy('user.id')->paginate(20);
         return view('company.userlist',compact('users','keyword'));
     }
