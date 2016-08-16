@@ -34,7 +34,7 @@ class CompanyController extends Controller
 
     public function failusers(){
         $users=DB::table('pai_user as user')
-            ->select('id','mobile','mobile_code','created','updated')
+            ->select('id','mobile','mobile_code','created','updated','ip_address')
             ->where('user_name','=',null)
             ->orWhere('user_name','=','')
             ->orderBy('id','desc')->paginate(20);
