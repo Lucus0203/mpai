@@ -38,7 +38,6 @@
                                     <col width="8%">
                                     <col width="10%">
                                     <col width="10%">
-                                    <col width="10%">
                                     <col width="8%">
                                     <col width="8%">
                                     <col width="8%">
@@ -52,7 +51,6 @@
                                     <th>公司编号</th>
                                     <th>公司名称</th>
                                     <th>手机</th>
-                                    <th>电话</th>
                                     <th>邮箱</th>
                                     <th>角色</th>
                                     <th class="center">注册时间</th>
@@ -72,7 +70,6 @@
                                         <td>{{$c->company_code}}</td>
                                         <td>{{$c->company_name}}</td>
                                         <td>{{$c->mobile}}</td>
-                                        <td>{{$c->tel}}</td>
                                         <td>{{$c->email}}</td>
                                         <td>@if($c->role==1)企业管理员@else 助理管理员 @endif</td>
                                         <td class="center">{{$c->created}}</td>
