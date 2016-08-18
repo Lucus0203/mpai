@@ -14,13 +14,13 @@ class LogController extends Controller
     //
     public function userlogin($userid){
         $user=User::find($userid);
-        $logs=UserLoginLog::where('user_id','=',$userid)->paginate(20);
+        $logs=UserLoginLog::where('user_id','=',$userid)->orderBy('created','desc')->paginate(20);
         return view('log/userlogin',compact('user','logs'));
     }
 
     public function useraction($userid){
         $user=User::find($userid);
-        $logs=UserActionLog::where('user_id','=',$userid)->paginate(20);
+        $logs=UserActionLog::where('user_id','=',$userid)->orderBy('created','desc')->paginate(20);
         return view('log/useraction',compact('user','logs'));
     }
 }
