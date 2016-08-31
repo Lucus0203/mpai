@@ -34,10 +34,11 @@
                             <table id="sample-table-1" class="table table-striped table-bordered table-hover">
                                 <colgroup>
                                     <col width="8%">
-                                    <col width="8%">
+                                    <col width="10%">
                                     <col width="8%">
                                     <col width="10%">
-                                    <col width="10%">
+                                    <col width="8%">
+                                    <col width="8%">
                                     <col width="8%">
                                     <col width="8%">
                                     <col width="8%">
@@ -54,7 +55,6 @@
                                     <th>邮箱</th>
                                     <th>角色</th>
                                     <th class="center">注册时间</th>
-                                    <th class="center">最后登录</th>
                                     <th class="center">最后操作</th>
                                     <th class="center">操作</th>
                                 </tr>
@@ -73,7 +73,6 @@
                                         <td>{{$c->email}}</td>
                                         <td>@if($c->role==1)企业管理员@else 助理管理员 @endif</td>
                                         <td class="center">{{$c->created}}</td>
-                                        <td class="center"><a href="/company/userlist/log/userlogin/{{$c->id}}">{{$c->logintime}}</a> </td>
                                         <td class="center"><a href="/company/userlist/log/useraction/{{$c->id}}">{{$c->actiontime}}</a> </td>
                                         <td class="center">
                                             <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
