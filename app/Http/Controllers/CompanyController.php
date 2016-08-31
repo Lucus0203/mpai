@@ -51,7 +51,7 @@ class CompanyController extends Controller
         $users=DB::table('pai_user as user')
             ->select('user.id','company.code as company_code','company.name as company_name','user.user_name','user.real_name','user.mobile','user.tel','user.email','user.role','user.created','actionlog.created as actiontime')
             ->leftJoin('pai_company as company','company.code','=','user.company_code')
-            ->leftJoin(DB::raw('(select user_id,created from `pai_user_action_log` group by user_id order by created desc ) as actionlog '),'actionlog.user_id','=','user.id')
+            ->leftJoin(DB::raw('(select * from (select user_id,created from `pai_user_action_log` order by created desc) s group by user_id order by created desc ) as actionlog '),'actionlog.user_id','=','user.id')
             ->where(function($query) use ($keyword){
                 if(!empty($keyword)){
                     $query->where('company.name','like','%'.$keyword.'%')
