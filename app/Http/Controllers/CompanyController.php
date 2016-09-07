@@ -25,7 +25,8 @@ class CompanyController extends Controller
                         ->orWhere('company.contact','like','%'.$keyword.'%')
                         ->orWhere('company.mobile','like','%'.$keyword.'%')
                         ->orWhere('company.email','like','%'.$keyword.'%')
-                        ->orWhere('company.code','like','%'.$keyword.'%');
+                        ->orWhere('company.code','like','%'.$keyword.'%')
+                        ->orWhere('company.note','like','%'.$keyword.'%');
                 }
             })
             ->orderBy('company.code','desc')->groupBy('user.id')->paginate(20);
