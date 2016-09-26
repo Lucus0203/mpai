@@ -29,7 +29,7 @@
         </div><!-- /.page-header -->
         <div class="row">
             <div class="col-sm-6">
-                {{ Form::open(['url'=>'company/purview','method'=>'get']) }}
+                {{ Form::open(['url'=>'order','method'=>'get']) }}
                 <label>关键字查询(公司/公司编号/联系人): {{ Form::text('keyword',$keyword) }}</label>
                 {{ Form::close()}}
             </div>
