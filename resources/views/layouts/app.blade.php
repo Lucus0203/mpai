@@ -247,6 +247,51 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="#" class="dropdown-toggle">
+                        <i class="icon-i fa fa-file-text fa-lg" aria-hidden="true"></i>
+                        <span class="menu-text"> 年度调研 </span>
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+                    <ul class="submenu" {{ Request::segment(1)=='annual' ? 'style=display:block;' : '' }}>
+                        <li class="{{ Request::is('annual/list') ? 'active' : '' }}">
+                            <a>
+                                <i class="icon-double-angle-right fa fa-angle-double-right"></i>
+                                调研列表
+                            </a>
+                        </li>
+                        <li class="{{ Request::is('annual/course') ? 'active' : '' }}">
+                            <a href="/annual/course">
+                                <i class="icon-double-angle-right fa fa-angle-double-right"></i>
+                                基础课程库
+                            </a>
+                        </li>
+                        <li class="{{ Request::is('annual/course/create') ? 'active' : '' }}">
+                            <a href="/annual/course/create">
+                                <i class="icon-double-angle-right fa fa-angle-double-right"></i>
+                                课程库添加
+                            </a>
+                        </li>
+                        <li class="{{ Request::is('annual/course/import') ? 'active' : '' }}">
+                            <a href="/annual/course/import">
+                                <i class="icon-double-angle-right fa fa-angle-double-right"></i>
+                                课程库导入
+                            </a>
+                        </li>
+                        <li class="{{ Request::is('annual/coursetype') ? 'active' : '' }}">
+                            <a href="/annual/coursetype">
+                                <i class="icon-double-angle-right fa fa-angle-double-right"></i>
+                                课程库类型
+                            </a>
+                        </li>
+                        <li class="{{ Request::is('annual/coursetype/create') ? 'active' : '' }}">
+                            <a href="/annual/coursetype/create">
+                                <i class="icon-double-angle-right fa fa-angle-double-right"></i>
+                                课程类型添加
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
             </ul><!-- /icon -->
 

@@ -26,6 +26,7 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('/company/{companyid}/edit','CompanyController@edit');
     Route::put('/company/{companyid}/update','CompanyController@update');
     Route::get('/company/{companyid}/updatenote','CompanyController@updatenote');
+    Route::get('/company/exportByIndustry','CompanyController@exportByIndustry');
 
     Route::get('/course', 'CourseController@index');
     Route::get('/teacher', 'TeacherController@index');
@@ -59,5 +60,22 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('/order/{id}/destroy','OrderController@destroy');
     Route::get('/order/{id}/checked','OrderController@checked');
     Route::get('/order/{id}/unchecked','OrderController@unchecked');
+
+    Route::get('/annual/course','AnnualSurveyController@course');
+    Route::get('/annual/course/create','AnnualSurveyController@courseCreate');
+    Route::post('/annual/course','AnnualSurveyController@courseStore');
+    Route::get('/annual/course/import','AnnualSurveyController@courseImport');
+    Route::post('/annual/course/upload','AnnualSurveyController@courseUpload');
+    Route::get('/annual/course/{id}/edit','AnnualSurveyController@courseEdit');
+    Route::patch('/annual/course/{id}','AnnualSurveyController@courseUpdate');
+    Route::get('/annual/course/{id}/destroy','AnnualSurveyController@courseDestroy');
+    Route::get('/annual/coursetype','AnnualSurveyController@courseType');
+    Route::post('/annual/coursetype','AnnualSurveyController@courseTypeStore');
+    Route::get('/annual/coursetype/create','AnnualSurveyController@courseTypeCreate');
+    Route::get('/annual/coursetype/{id}/edit','AnnualSurveyController@courseTypeEdit');
+    Route::patch('/annual/coursetype/{id}','AnnualSurveyController@courseTypeUpdate');
+    Route::get('/annual/coursetype/{id}/destroy','AnnualSurveyController@courseTypeDestroy');
+    Route::get('/annual/coursetype/{id}/public','AnnualSurveyController@courseTypePublic');
+    Route::get('/annual/coursetype/{id}/unpublic','AnnualSurveyController@courseTypeUnpublic');
 
 });

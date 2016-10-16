@@ -52,6 +52,7 @@
                 {{ Form::open(['url'=>'company/list','method'=>'get']) }}
                 <label>关键字查询(公司/联系人/手机/邮箱): {{ Form::text('keyword',$keyword) }}</label>
                 {{ Form::close()}}
+                <a href="/company/exportByIndustry">导出企业名单</a>
             </div>
             <div class="col-xs-12">
                 <!-- PAGE CONTENT BEGINS -->

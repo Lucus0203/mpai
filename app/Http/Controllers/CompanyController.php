@@ -6,6 +6,7 @@ use App\Company;
 use App\User;
 use DB;
 use Illuminate\Http\Request;
+use Excel;
 
 class CompanyController extends Controller
 {
@@ -83,6 +84,30 @@ class CompanyController extends Controller
         $company->note=$request->note;
         $company->update();
         return response()->json(array('success'=>'ok'));
+    }
+
+    //导出行业公司备注
+    public function exportByIndustry(){
+        $cellData = [
+            ['公司名称','行业','领域','备注','联系人','手机'],
+        ];
+        $companys=DB::table('pai_company as company')
+            ->select('company.id','company.code','company.name','company.logo','company.contact','company.mobile','company.tel','company.email','company.note','company.updated','parent_industry.name as parent_industry_name','industry.name as industry_name')
+            ->leftJoin('pai_industries as parent_industry','company.industry_parent_id','=','parent_industry.id')
+            ->leftJoin('pai_industries as industry','company.industry_id','=','industry.id')
+            ->orderBy('parent_industry.id','asc')
+            ->orderBy('industry.id','asc')
+            ->orderBy('company.code','asc')->get();
+
+        foreach($companys as $c){
+            $cellData[]=[$c->name,$c->parent_industry_name,$c->industry_name,$c->note,$c->contact,$c->mobile];
+        }
+        Excel::create('企业行业名单',function($excel) use ($cellData){
+            $excel->sheet('score', function($sheet) use ($cellData){
+                $sheet->rows($cellData);
+            });
+        })->export('xls');
+
     }
 
 }

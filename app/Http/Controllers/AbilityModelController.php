@@ -117,11 +117,11 @@ class AbilityModelController extends Controller
                     $ability['level_info9'] = trim($objPHPExcel->getActiveSheet()->getCell('N' . $row)->getValue());//级别9描述
                     $ability['level_info10'] = trim($objPHPExcel->getActiveSheet()->getCell('O' . $row)->getValue());//级别10描述
                     if(empty($ability['type'])){
-                        $msg[]='第'.$sheetNo.'工作簿'.$highestRow.'行,第A列的类型为空';
+                        $msg[]='第'.$sheetNo.'工作簿'.$row.'行,第A列的类型为空';
                     }elseif(empty($ability['name'])){
-                        $msg[]='第'.$sheetNo.'工作簿'.$highestRow.'行,第C列的能力名称为空';
+                        $msg[]='第'.$sheetNo.'工作簿'.$row.'行,第C列的能力名称为空';
                     }elseif(empty($ability['level'])){
-                        $msg[]='第'.$sheetNo.'工作簿'.$highestRow.'行,第E列的级数为空';
+                        $msg[]='第'.$sheetNo.'工作簿'.$row.'行,第E列的级数为空';
                     }else{
                         if(empty($code)){
                             $max = AbilityModel::where('type', $ability['type'])->max('code');
