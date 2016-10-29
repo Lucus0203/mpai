@@ -63,6 +63,13 @@
                 });
                 $('#datetimepicker1,#datetimepicker2').datetimepicker({pickTime: false});
                 $(".chosen-select").chosen({search_contains: true,disable_search_threshold: 10});
+                $('#module').change(function(){
+                    if($(this).val()=='ability'){
+                        $('.featuersBox').show();
+                    }else{
+                        $('.featuersBox').hide();
+                    }
+                });
             });
         </script>
 
@@ -131,10 +138,10 @@
                         <div class="form-group">
                             <label class="col-sm-1 control-label no-padding-right" for="module">模块</label>
                             <div class="col-sm-2">
-                                {{ Form::select('module', array('ability'=>'能力模型'), null, array('class' => 'form-control','id'=>'module')) }}
+                                {{ Form::select('module', array('ability'=>'能力模型','annualplan'=>'年度计划'), $order->module, array('class' => 'form-control','id'=>'module')) }}
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group featuersBox" @if($order->module=='annualplan') style="display: none;" @endif>
                             <label class="col-sm-1 control-label no-padding-right" for="features">功能</label>
                             <div class="col-sm-2">
                                 <select name="features_id" class="form-control" id="features">

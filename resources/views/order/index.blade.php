@@ -102,6 +102,8 @@
                                         </td>
                                         <td>@if($c->module=='ability')
                                                 能力模型
+                                            @elseif($c->module=='annualplan')
+                                                年度计划
                                             @endif</td>
                                         <td>{{$c->features_name}}</td>
                                         <td>@if($c->years==0)

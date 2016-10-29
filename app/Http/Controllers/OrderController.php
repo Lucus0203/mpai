@@ -54,11 +54,12 @@ class OrderController extends Controller
         if(empty($input['start_time'])){
             unset($input['start_time']);
         }
-        if($request->features_id==0){
-            $input['features_name']='全部';
-        }elseif($request->module=='ability'){
+        if($request->module=='ability'&&$request->features_id!=0){//能力非全部岗位
             $f=AbilityJob::find($request->features_id);
             $input['features_name']=$f->name;
+        }else{
+            $input['features_id']=0;
+            $input['features_name']='全部';
         }
         CompanyOrder::create($input);
         return redirect('/order')->with('success','ok');
@@ -89,11 +90,12 @@ class OrderController extends Controller
         if(empty($input['start_time'])){
             unset($input['start_time']);
         }
-        if($request->features_id==0){
-            $input['features_name']='全部';
-        }elseif($request->module=='ability'){
+        if($request->module=='ability'&&$request->features_id!=0){//能力非全部岗位
             $f=AbilityJob::find($request->features_id);
             $input['features_name']=$f->name;
+        }else{
+            $input['features_id']=0;
+            $input['features_name']='全部';
         }
         $order->update($input);
 
