@@ -87,9 +87,9 @@ class CompanyController extends Controller
     }
 
     //导出行业公司备注
-    public function exportByIndustry(){
+    public function export(){
         $cellData = [
-            ['公司名称','行业','领域','备注','联系人','手机'],
+            ['公司名称','行业','领域','备注','联系人','手机','邮箱'],
         ];
         $companys=DB::table('pai_company as company')
             ->select('company.id','company.code','company.name','company.logo','company.contact','company.mobile','company.tel','company.email','company.note','company.updated','parent_industry.name as parent_industry_name','industry.name as industry_name')
@@ -100,7 +100,7 @@ class CompanyController extends Controller
             ->orderBy('company.code','asc')->get();
 
         foreach($companys as $c){
-            $cellData[]=[$c->name,$c->parent_industry_name,$c->industry_name,$c->note,$c->contact,$c->mobile];
+            $cellData[]=[$c->name,$c->parent_industry_name,$c->industry_name,$c->note,$c->contact,$c->mobile,$c->email];
         }
         Excel::create('企业行业名单',function($excel) use ($cellData){
             $excel->sheet('score', function($sheet) use ($cellData){
