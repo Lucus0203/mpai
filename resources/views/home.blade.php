@@ -30,7 +30,7 @@
 
                     欢迎使用
                     <strong class="green">
-                        培训派后台管理系统
+                        Trainingpie管理系统
                     </strong>
                 </div>
 
